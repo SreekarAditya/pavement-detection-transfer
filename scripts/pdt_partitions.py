@@ -140,7 +140,8 @@ def main(a):
 
     # ---------------- item 11
     item11 = {}
-    for tag, clean_set in (("threshold_0.75", set(cl.file)), ("threshold_0.65", set(cl065.file))):
+    # full clean holdout (line 79); `cl` was narrowed at line 86 to clean images with reference boxes (fixed after the lock)
+    for tag, clean_set in (("threshold_0.75", set(clean)), ("threshold_0.65", set(cl065.file))):
         imgs = pd.DataFrame(dict(file=allval)); imgs["country"] = imgs.file.map(C_country)
         imgs["linked"] = ~imgs.file.isin(clean_set)
         r = {}
