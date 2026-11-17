@@ -26,13 +26,39 @@ for w in $(seq 0 $((WORKERS - 1))); do
 done
 wait_all
 # one prediction folder for scoring (links into the workers' folders) and one run log
-mkdir -p "$OUT/pred"
-for w in $(seq 0 $((WORKERS - 1))); do
-  for d in "$OUT/worker_$w/pred"/*/; do
-    [ -d "$d" ] || continue
-    n=$(basename "$d"); [ -e "$OUT/pred/$n" ] || ln -s "$d" "$OUT/pred/$n"
-  done
-done
+python - "$OUT" "$WORKERS" <<'PYEOF'
+import filecmp
+from pathlib import Path
+import sys
+from tempfile import TemporaryDirectory
+
+out = Path(sys.argv[1])
+workers = int(sys.argv[2])
+final = out / "pred"
+with TemporaryDirectory(prefix=".prediction-merge-", dir=out) as temp:
+    work = Path(temp)
+    merged = work / "pred"
+    merged.mkdir()
+    for worker in range(workers):
+        root = out / f"worker_{worker}" / "pred"
+        for prediction in sorted(root.glob("*/*.parquet")):
+            destination = merged / prediction.parent.name / prediction.name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if destination.exists():
+                if not filecmp.cmp(prediction, destination, shallow=False):
+                    raise SystemExit(f"STOP: nonidentical duplicate prediction {destination.relative_to(merged)}")
+            else:
+                destination.symlink_to(prediction.absolute())
+    prior = work / "prior"
+    if final.exists() or final.is_symlink():
+        final.rename(prior)
+    try:
+        merged.rename(final)
+    except OSError:
+        if prior.exists() or prior.is_symlink():
+            prior.rename(final)
+        raise
+PYEOF
 python "$S/pr_runs_merge.py" --out "$OUT" --run_table "$T"
 python -c "import sys; sys.path.insert(0, '$S'); import pr_common as PC; PC.write_manifest('$OUT/pred')"
 python "$S/pr_score_gpu.py" e5 --root "$LOCK" --out "$OUT/scores" --pred "$OUT/pred" --runs "$T" \
