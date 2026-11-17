@@ -1,0 +1,81 @@
+# Parameters for the analyses after registration (rule document RULES.md, same folder). Final once both files
+# are copied to post_reg/rules/, committed and tagged post-reg-rules-v1. Reasons for every value: RULES.md.
+seed: 2026
+bootstrap: {draws: 2000}
+sample_draws: 2000            # repeated calibration or pilot samples per setting
+split: {calibration_share: 0.5, unit: block, balance: images, seed: 2026}
+k: {four_class: 152.49, pothole: 15.80, crack: 136.69}
+class_sets:
+  four_class: {k: 152.49, networks: [ecupdd, ird, svrdd]}
+  merged_crack: {k: 136.69, networks: [ecupdd, ird, svrdd]}
+  pothole: {k: 15.80, networks: all_seven}
+selected: yolo12m_seed0
+exp1:
+  class_sets: [four_class, pothole]   # the class sets of experiment 1 (merged crack: experiment 18 track only)
+  floors: [dev_threshold, default_conf_0_25]
+  default_conf: 0.25
+  batch_B: 100
+  batch_B_sensitivity: [25, 400]
+  constants: max_over_other_networks
+  fallback: largest_grid_value_flagged
+  recall_floor: {four_class: 0.30, pothole: 0.25, merged_crack: 0.30}   # half the selected detector's benchmark recall, to 0.05
+  adapt_size: 100              # experiment 5 run used when the procedure says adapt (draw = procedure draw mod 3)
+exp2:
+  n_grid: [25, 50, 100, 250, 500]
+  criterion_rel: 0.10
+  criterion_share: 0.90
+  contiguous: [ird, rome, svrdd]
+exp3:
+  m_grid: [50, 100, 200, 400, 800]
+  floor_grid: [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60]
+  margin: 0.05
+  coverage: 0.90
+  levels: [0.90, 0.95]
+  decision_level: 0.90         # accept if the lower end of the two-sided 90% interval is at or above the floor
+  threshold_rule: calibration_quota   # the confidence giving k alerts per 100 images on the whole calibration part
+  ppi: {pseudo_reference: consensus_at_quota, agreement_min_share: 0.5, power_tuning: true}
+exp4: {conf: 0.25, detector: yolo12s_seed0}
+exp5:
+  sizes: [50, 100, 200]
+  draws_size_curve: 3
+  ranking_size: 100
+  pilot_reused_for_training: true
+  pilot_boxes: 200             # pilot sample used as the first part of the training set
+  audit_boxes: 200             # fresh post-adaptation audit
+  recipe: {epochs: 30, lr0: 0.001, imgsz: 640, batch: 16, optimizer: AdamW, warmup_epochs: 0, freeze: 0, seed: 0}   # other settings: Ultralytics defaults
+  card: A40
+exp9: {operating: quota, floor_conf: 0.001, chance_repeats: 20}
+exp10: {conf: 0.25}
+exp11: {sample_per_collection: 150, strata: tertiles, unmapped_overlap: 0.5, agreement_iou: 0.5}
+exp12: {quotas: [25, 50, 75, 100, 152.49, 200, 250, 300]}
+exp14: {bins: [0, 8, 16, 32, 64, 128, 256, 640]}
+exp15:
+  variants: [untiled_640, crop, tile_2x2, input_1280]
+  crop_rule: lower_half_two_tiles   # lower half of the frame as two side-by-side tiles; boxes mapped back to original pixels
+  tile_overlap: 0.2
+  tile_merge: {method: nms, iou: 0.7}
+  reverse_scale_rule: match_norway_median_scale
+exp16: {bins: 15, min_conf: 0.001}
+exp18:
+  candidates_file: rules/exp18_candidates.csv
+  tracks: {four_class: {min_per_class: 150}, merged_crack: {min_total: 450}, pothole: {min: 150}}
+  min_blocks: 20
+  mapping:                     # frozen class mapping for new releases (names compared lower-case, '_' and '-' as spaces)
+    longitudinal crack: D00
+    longitudinal cracking: D00
+    d00: D00
+    transverse crack: D10
+    transverse cracking: D10
+    d10: D10
+    alligator crack: D20
+    alligator cracking: D20
+    fatigue crack: D20
+    crocodile crack: D20
+    d20: D20
+    pothole: D40
+    potholes: D40
+    d40: D40
+                                 # a generic "crack" and every other name stay unmapped
+
+exp19: {include: true}
+budget: {remaining_usd: 16.29, reserve_usd: 2.00, task07_max_hours: 14, task07_workers: 2, task06_max_hours: 5}   # USD 30 cap less USD 13.46 (15 November pods) and USD 0.25 (tasks 01 and 02); hourly A40 rate USD 0.625
