@@ -8,7 +8,8 @@ need RULES_SHA PARAMS_SHA
 start_task 06
 setup_env gpu
 fetch_lock
-fetch_best
+par best fetch_best
+wait_all
 par rdd fetch_rdd
 par ext fetch_ext ecupdd ird svrdd
 wait_all
