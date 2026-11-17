@@ -22,6 +22,8 @@ CATS = ["missing_mapped_distress", "other_distress", "road_object", "not_damage"
 SUBS = ["longitudinal crack", "transverse crack", "alligator crack", "pothole"]
 ALERT_OUTLINE = (255, 0, 255)
 CROP_WINDOW = ["crop_left", "crop_top", "crop_right", "crop_bottom"]
+ADJUDICATION_SEED = 2028
+AGREE = ["agree_with_first", "agree_with_second"]
 
 
 def part_a(a, params, out):
@@ -150,33 +152,23 @@ def rating_item_images(row, img_path):
     return encode_jpeg(full), encode_jpeg(crop), window
 
 
-def item_images(row, img_path):
-    from PIL import Image, ImageDraw
-    im = Image.open(img_path)
-    from PIL import ImageOps
-    im = ImageOps.exif_transpose(im).convert("RGB")
-    full = im.copy(); d = ImageDraw.Draw(full)
-    w = max(3, int(round(max(full.size) / 400)))
-    d.rectangle([row.x1, row.y1, row.x2, row.y2], outline=(255, 255, 0), width=w)
-    full.thumbnail((1280, 1280))
-    cx, cy = (row.x1 + row.x2) / 2, (row.y1 + row.y2) / 2
-    hw = max(row.x2 - row.x1, 160 / 2); hh = max(row.y2 - row.y1, 160 / 2)
-    crop = im.crop((max(cx - hw, 0), max(cy - hh, 0), min(cx + hw, im.size[0]), min(cy + hh, im.size[1])))
-    crop.thumbnail((640, 640))
-
-    return encode_jpeg(full), encode_jpeg(crop)
-
-
 VIEWER = """<!DOCTYPE html><html><head><meta charset="utf-8"><title>Rating packet</title>
 <style>body{font-family:sans-serif;margin:16px}img{max-width:100%}.row{display:flex;gap:12px;flex-wrap:wrap}
 button{margin:4px;padding:8px 12px;font-size:15px}#sub button{background:#eef}.done{color:#080}</style></head><body>
 <h2 id="h"></h2><div class="row"><div><img id="full"></div><div><img id="crop"></div></div>
+<dl id="prior" hidden><dt>First answer</dt><dd id="first"></dd><dt>Second answer</dt><dd id="second"></dd></dl>
 <div id="cats"></div><div id="sub" style="display:none">Which class? </div>
 <p><button onclick="prev()">Back</button> <span id="st"></span> <button onclick="save()">Save answers</button></p>
 <script>
 const RATER=__RATER__; const ITEMS=__ITEMS__; const CATS=__CATS__; const SUBS=__SUBS__;
 let i=0, t0=Date.now(); const ans={};
-function show(){const it=ITEMS[i];document.getElementById('h').textContent=`Item ${i+1} of ${ITEMS.length} (${it.item})`;
+function displayAnswer(a){return a.category.replaceAll('_',' ')+' / '+(a.subclass||'No subclass');}
+function show(){
+if(!ITEMS.length){document.getElementById('h').textContent='No items to adjudicate.';cd.hidden=true;return;}
+const it=ITEMS[i];document.getElementById('h').textContent=`Item ${i+1} of ${ITEMS.length} (${it.item})`;
+document.getElementById('prior').hidden=!it.first;
+if(it.first){document.getElementById('first').textContent=displayAnswer(it.first);
+document.getElementById('second').textContent=displayAnswer(it.second);}
 document.getElementById('full').src='data:image/jpeg;base64,'+it.full;document.getElementById('crop').src='data:image/jpeg;base64,'+it.crop;
 document.getElementById('sub').style.display='none';const a=ans[it.item];document.getElementById('st').textContent=a?('answered: '+a.category+(a.subclass?(' / '+a.subclass):'')):'';t0=Date.now();}
 function rec(cat,sub){const it=ITEMS[i];const prev=ans[it.item];const s=(Date.now()-t0)/1000+(prev?prev.seconds:0);
@@ -233,13 +225,51 @@ def kappa(x, y, cats):
     return (po - pe) / (1 - pe) if pe < 1 else np.nan, M
 
 
+def load_answers(path, items, categories):
+    def unique_keys(pairs):
+        obj = dict(pairs)
+        if len(obj) != len(pairs):
+            sys.exit("STOP: duplicate key in an answer export")
+        return obj
+
+    document = json.loads(Path(path).read_text(), object_pairs_hook=unique_keys)
+    if not isinstance(document, dict) or not isinstance(document.get("rater"), str):
+        sys.exit("STOP: malformed answer export")
+    answers = document.get("answers")
+    if not isinstance(answers, dict) or set(answers) != set(items):
+        sys.exit("STOP: answer export does not cover exactly the required items")
+    for answer in answers.values():
+        if not isinstance(answer, dict) or set(answer) != {"category", "subclass", "seconds"}:
+            sys.exit("STOP: malformed answer")
+        category, subclass, seconds = answer["category"], answer["subclass"], answer["seconds"]
+        if category not in categories or (subclass not in SUBS if category == CATS[0] else subclass is not None):
+            sys.exit("STOP: invalid answer category or subclass")
+        if type(seconds) not in (int, float) or not math.isfinite(seconds) or seconds < 0:
+            sys.exit("STOP: invalid answer time")
+    return document
+
+
+def rating_images(path, items):
+    html = Path(path).read_text()
+    _, start, data = html.partition("const ITEMS=")
+    payload, end, _ = data.partition("; const CATS=")
+    if not start or not end:
+        sys.exit("STOP: could not find the rebuilt rating packet images")
+    rows = json.loads(payload)
+    images = {r["item"]: {"full": r["full"], "crop": r["crop"]} for r in rows}
+    if len(images) != len(rows) or set(images) != set(items):
+        sys.exit("STOP: the rebuilt rating packet does not match the item key")
+    return images
+
+
 def part_c(a, params, out):
-    S = pd.read_parquet(out / "private" / "e11b_key.parquet")
-    r1, r2 = (json.load(open(f)) for f in a.answers)
-    for r in (r1, r2):
-        miss = set(S["item"]) - set(r["answers"]); extra = set(r["answers"]) - set(S["item"])
-        if miss or extra:
-            sys.exit(f"STOP: {r['rater']} answers missing {len(miss)} items, {len(extra)} unknown items")
+    private = out / "private"
+    S = pd.read_parquet(private / "e11b_key.parquet")
+    if S["item"].duplicated().any() or not set(CROP_WINDOW).issubset(S.columns):
+        sys.exit("STOP: a unique item key from the rebuilt rating packets is required")
+    r1, r2 = (load_answers(path, S["item"], CATS) for path in a.answers)
+    if r1["rater"] == r2["rater"]:
+        sys.exit("STOP: two distinct rater exports are required")
     x = [r1["answers"][i]["category"] for i in S["item"]]; y = [r2["answers"][i]["category"] for i in S["item"]]
     k, M = kappa(x, y, CATS)
     rng = np.random.default_rng(params["seed"])
@@ -252,31 +282,60 @@ def part_c(a, params, out):
     eff = [dict(rater=r, median_seconds=float(np.median(S[c])), q25=float(np.percentile(S[c], 25)),
                 q75=float(np.percentile(S[c], 75))) for r, c in ((r1["rater"], "sec1"), (r2["rater"], "sec2"))]
     pd.DataFrame(eff).to_csv(out / "e11c_effort.csv", index=False)
-    dis = S[S.rater1 != S.rater2]
+    dis = S[S.rater1 != S.rater2].sort_values("item")
+    both_missing = S[(S.rater1 == CATS[0]) & (S.rater2 == CATS[0])]
+    matching = int((both_missing.sub1 == both_missing.sub2).sum())
+    pd.DataFrame([dict(status="unadjudicated", both_missing_mapped_distress=len(both_missing),
+                       matching_subclasses=matching,
+                       matching_share=matching / len(both_missing) if len(both_missing) else None)
+                  ]).to_csv(out / "e11c_subclass_agreement_unadjudicated.csv", index=False)
+
+    mapping_path = private / "e11c_answer_order.json"
+    answer_hashes = [PC.sha(path) for path in a.answers]
+    raters = (r1["answers"], r2["answers"])
     if not a.adjudication:
+        if not a.rating_packet:
+            sys.exit("STOP: the rebuilt rating packet is required for adjudication images")
+        images = rating_images(a.rating_packet, S["item"])
+        order_rng = np.random.default_rng(ADJUDICATION_SEED)
+        order = order_rng.permutation(len(dis))
+        first_rater = {item: int(index) for item, index in zip(dis["item"], order_rng.integers(0, 2, len(dis)))}
         items = []
-        order = np.random.default_rng(params["seed"] + 2).permutation(len(dis))
         for j in order:
-            r = dis.iloc[j]
-            f, c = item_images(r, Path(a.ext_root) / r.collection / "pool" / "images" / r.file)
-            items.append(dict(item=r["item"], full=f, crop=c))
+            item = dis["item"].iloc[j]
+            first = first_rater[item]
+            shown = [{key: raters[index][item][key] for key in ("category", "subclass")}
+                     for index in (first, 1-first)]
+            items.append(dict(item=item, **images[item], first=shown[0], second=shown[1]))
         d = out / "packet_adjudication"; d.mkdir(exist_ok=True)
-        cats = CATS + ["agree_with_first", "agree_with_second"]
-        viewer(d / "index.html", "adjudicator", items, cats)
-        (d / "answers_shown.json").write_text(json.dumps(
-            {r["item"]: dict(first=r.rater1, second=r.rater2) for _, r in dis.iterrows()}, indent=1))
-        S.to_parquet(out / "private" / "e11b_merged.parquet")
-        PC.log(f"kappa {k:.3f}; {len(dis)} items to adjudicate")
+        viewer(d / "index.html", "adjudicator", items, CATS + AGREE)
+        PC.jdump(dict(seed=ADJUDICATION_SEED, answer_hashes=answer_hashes, first_rater=first_rater), mapping_path)
+        S.to_parquet(private / "e11b_merged.parquet")
+        PC.log("adjudication packet ready")
         return
-    adj = json.load(open(a.adjudication))["answers"]
-    final = []
+
+    mapping = json.loads(mapping_path.read_text())
+    first_rater = mapping["first_rater"]
+    if (mapping["seed"] != ADJUDICATION_SEED or mapping["answer_hashes"] != answer_hashes
+            or set(first_rater) != set(dis["item"])
+            or any(type(index) is not int or index not in (0, 1) for index in first_rater.values())):
+        sys.exit("STOP: the private answer order does not match these exports")
+    adj = load_answers(a.adjudication, dis["item"], CATS + AGREE)["answers"]
+    final, subclasses = [], []
     for _, r in S.iterrows():
         if r.rater1 == r.rater2:
             final.append(r.rater1)
+            subclasses.append(r.sub1 if r.sub1 == r.sub2 else None)
         else:
-            v = adj[r["item"]]["category"]
-            final.append(r.rater1 if v == "agree_with_first" else r.rater2 if v == "agree_with_second" else v)
+            item = r["item"]
+            answer = adj[item]
+            if answer["category"] in AGREE:
+                first = first_rater[item]
+                answer = raters[first if answer["category"] == AGREE[0] else 1-first][item]
+            final.append(answer["category"])
+            subclasses.append(answer["subclass"])
     S["final"] = final
+    S["final_subclass"] = subclasses
     S.to_parquet(out / "e11b_final.parquet")
     A = pd.read_parquet(out / "e11a_alerts.parquet")
     PC.locked_scripts(a.root); R = PC.Root(a.root)
@@ -321,6 +380,7 @@ if __name__ == "__main__":
     ap.add_argument("--root", required=True); ap.add_argument("--rules", required=True)
     ap.add_argument("--out", required=True); ap.add_argument("--ext_root", required=True)
     ap.add_argument("--answers", nargs=2, default=None); ap.add_argument("--adjudication", default="")
+    ap.add_argument("--rating-packet", help="rebuilt 05B viewer whose image bytes are reused")
     ap.add_argument("--manifest_sha", default="ef49673bdc6301009223fb7eecd0aa71be7f53eb6220395d30262b64b19228c7")
     ap.add_argument("--rules_sha", default=""); ap.add_argument("--params_sha", default="")
     ap.add_argument("--skip_gate", action="store_true", help="synthetic tests only")

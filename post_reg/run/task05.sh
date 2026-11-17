@@ -9,16 +9,21 @@ PART="${1:?part a, b or c}"
 start_task "05${PART^^}"
 setup_env cpu
 fetch_lock
-fetch_ext ecupdd ird svrdd
 case "$PART" in
-  a) python "$S/pr_exp11.py" a --root "$LOCK" --out "$OUT" --ext_root "$RUN/ext" "${GATE[@]}" ;;
+  a) fetch_ext ecupdd ird svrdd
+     python "$S/pr_exp11.py" a --root "$LOCK" --out "$OUT" --ext_root "$RUN/ext" "${GATE[@]}" ;;
   b) [ -d "$OUTBASE/05A" ] || die "run part a first (its output is the sample frame)"
+     fetch_ext ecupdd ird svrdd
      cp -r "$OUTBASE/05A/." "$OUT/" ; rm -f "$OUT/MANIFEST.sha256"
      python "$S/pr_exp11.py" b --root "$LOCK" --out "$OUT" --ext_root "$RUN/ext" "${GATE[@]}" ;;
   c) [ -n "${2:-}" ] && [ -n "${3:-}" ] || die "part c needs both raters' answer files"
-     cp -r "$OUTBASE/05B/." "$OUT/" ; rm -f "$OUT/MANIFEST.sha256"
+     mkdir -p "$OUT/private"
+     cp "$OUTBASE/05B/e11a_alerts.parquet" "$OUT/"
+     cp "$OUTBASE/05B/private/e11b_key.parquet" "$OUT/private/"
+     args=(--rating-packet "$OUTBASE/05B/packet_Aditya/index.html")
+     if [ -n "${4:-}" ]; then args+=(--adjudication "$4"); fi
      python "$S/pr_exp11.py" c --root "$LOCK" --out "$OUT" --ext_root "$RUN/ext" --answers "$2" "$3" \
-       ${4:+--adjudication "$4"} "${GATE[@]}" ;;
+       "${args[@]}" "${GATE[@]}" ;;
   *) die "part must be a, b or c" ;;
 esac
 finish_task
