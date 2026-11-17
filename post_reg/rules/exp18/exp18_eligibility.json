@@ -1,0 +1,124 @@
+{
+ "reference": {
+  "rdd2022_images": 47420,
+  "used_collection_images": 26786,
+  "descriptor": "sscd_disc_mixup",
+  "c0_files_sha256": {
+   "index.csv": "c2985d5993161d9889ed22aa120604f63a90968268fa7f9d43b9000bd1080283",
+   "desc_train.npy": "d1e8e3c7a7ed3df74dfd5bcd40a39a476179692286d11e17f627d0428a67ea14",
+   "desc_val.npy": "0f3d903231af69db40c0eff4c5f41860b4771ea08a56b9bae545d47cc9379970",
+   "c0_meta.json": "b64b683aae37043a250da5223a848c1ea68b8638d51d1f6ad811e074593be13e"
+  },
+  "rule": {
+   "link": "pHash <= 4 or SSCD cosine >= 0.75",
+   "blocks": "pHash <= 4 or SSCD cosine >= 0.65"
+  }
+ },
+ "networks": {
+  "nrdd2024_georgia": {
+   "release": "N-RDD2024 v5, Georgia archive",
+   "team": "N-RDD2024 authors (Mendeley Data 27c8pwsd6v)",
+   "transformed_copies_dropped": 0,
+   "transformed_copy_groups": 0,
+   "parent_links": 0,
+   "images_released": 798,
+   "images_before": 798,
+   "collapse_failed": false,
+   "removed_linked": 0,
+   "removed_linked_to": {},
+   "images_after": 798,
+   "boxes_after": {
+    "D00": 667,
+    "D10": 276,
+    "D20": 315,
+    "D40": 87
+   },
+   "blocks": 350,
+   "largest_block_share": 0.0476,
+   "eligible": {
+    "four_class": false,
+    "merged_crack": true,
+    "pothole": false
+   },
+   "calibration_images": 409,
+   "heldout_images": 389,
+   "heldout_labels_sha256": "60ec88d6653f3bb65eef56c9398031e54d183d237bc27c596be145b6286d1a8f",
+   "calibration_labels_sha256": "f17f6f80366f9613238411f4d5a8d9a2e24f2c38af613b3ad551eb8dc83c8c54"
+  },
+  "nrdd2024_turkiye": {
+   "release": "N-RDD2024 v5, T\u00fcrkiye archive",
+   "team": "N-RDD2024 authors (Mendeley Data 27c8pwsd6v)",
+   "transformed_copies_dropped": 131,
+   "transformed_copy_groups": 114,
+   "parent_links": 0,
+   "images_released": 3640,
+   "images_before": 3509,
+   "collapse_failed": false,
+   "removed_linked": 0,
+   "removed_linked_to": {},
+   "images_after": 3509,
+   "boxes_after": {
+    "D00": 4489,
+    "D10": 5117,
+    "D20": 133,
+    "D40": 39
+   },
+   "blocks": 192,
+   "largest_block_share": 0.4212,
+   "eligible": {
+    "four_class": false,
+    "merged_crack": true,
+    "pothole": false
+   },
+   "calibration_images": 1983,
+   "heldout_images": 1526,
+   "heldout_labels_sha256": "182015aee62298c6326cba45eda9150f7a081f46e54d90c9dd2c3fa652389d1d",
+   "calibration_labels_sha256": "eb6c6b2ca454c8c978e42ccc402a1c3a04615cabe3630b0ee827c005738c8a33"
+  },
+  "uav_pdd2023_tianjin": {
+   "release": "UAV-PDD2023 v4",
+   "team": "HaoHui Yan and JunFei Zhang (Zenodo 8429208)",
+   "transformed_copies_dropped": 1633,
+   "transformed_copy_groups": 807,
+   "parent_links": 571,
+   "images_released": 2440,
+   "images_before": 807,
+   "collapse_failed": false,
+   "removed_linked": 0,
+   "removed_linked_to": {},
+   "images_after": 807,
+   "boxes_after": {
+    "D00": 995,
+    "D10": 1783,
+    "D20": 201,
+    "D40": 62
+   },
+   "blocks": 18,
+   "largest_block_share": 0.5626,
+   "eligible": {
+    "four_class": false,
+    "merged_crack": false,
+    "pothole": false
+   },
+   "calibration_images": 805,
+   "heldout_images": 2,
+   "heldout_labels_sha256": "a4f4aa4fe23ee19c4e592c4ccfc39a4bd981d72fc62fe212bae82a7fd953a587",
+   "calibration_labels_sha256": "ad599c2f3bec0e92646bd7400039d68717281eafd713b93e9881b049f2d081c0"
+  }
+ },
+ "eligible_by_track": {
+  "four_class": [],
+  "merged_crack": [
+   "nrdd2024_georgia",
+   "nrdd2024_turkiye"
+  ],
+  "pothole": []
+ },
+ "distinct_teams_by_track": {
+  "four_class": [],
+  "merged_crack": [
+   "N-RDD2024 authors (Mendeley Data 27c8pwsd6v)"
+  ],
+  "pothole": []
+ }
+}
