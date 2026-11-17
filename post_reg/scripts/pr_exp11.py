@@ -9,7 +9,7 @@
 Unmapped boxes come from the prepared pools of scripts/pdt_s2_external.py (ext/<c>/pool/labels.parquet keeps
 boxes of unmapped classes with cls = -1).
 """
-import argparse, base64, io, json, sys
+import argparse, base64, io, json, math, sys
 from pathlib import Path
 
 import numpy as np
@@ -20,6 +20,8 @@ import pr_common as PC  # noqa: E402
 
 CATS = ["missing_mapped_distress", "other_distress", "road_object", "not_damage", "cannot_tell"]
 SUBS = ["longitudinal crack", "transverse crack", "alligator crack", "pothole"]
+ALERT_OUTLINE = (255, 0, 255)
+CROP_WINDOW = ["crop_left", "crop_top", "crop_right", "crop_bottom"]
 
 
 def part_a(a, params, out):
@@ -115,6 +117,39 @@ def sample_b(A, params):
     return S.sort_values("item").reset_index(drop=True)
 
 
+def encode_jpeg(image):
+    buffer = io.BytesIO()
+    image.save(buffer, "JPEG", quality=88)
+    return base64.b64encode(buffer.getvalue()).decode("ascii")
+
+
+def crop_axis(lo, hi, extent):
+    size = min(extent, max(160, math.ceil(2 * (hi - lo))))
+    start = round((lo + hi - size) / 2)
+    start = min(max(start, 0), extent - size)
+    return start, start + size
+
+
+def rating_item_images(row, img_path):
+    from PIL import Image, ImageDraw, ImageOps
+
+    with Image.open(img_path) as source:
+        image = ImageOps.exif_transpose(source).convert("RGB")
+    full = image.copy()
+    box = (row.x1, row.y1, row.x2, row.y2)
+    stroke = max(3, round(max(image.size) / 400))
+    ImageDraw.Draw(full).rectangle(box, outline=ALERT_OUTLINE, width=stroke)
+    full.thumbnail((1280, 1280))
+
+    left, right = crop_axis(row.x1, row.x2, image.width)
+    top, bottom = crop_axis(row.y1, row.y2, image.height)
+    window = (left, top, right, bottom)
+    crop = image.crop(window)
+    crop_box = (row.x1 - left, row.y1 - top, row.x2 - left, row.y2 - top)
+    ImageDraw.Draw(crop).rectangle(crop_box, outline=ALERT_OUTLINE, width=stroke)
+    return encode_jpeg(full), encode_jpeg(crop), window
+
+
 def item_images(row, img_path):
     from PIL import Image, ImageDraw
     im = Image.open(img_path)
@@ -129,9 +164,7 @@ def item_images(row, img_path):
     crop = im.crop((max(cx - hw, 0), max(cy - hh, 0), min(cx + hw, im.size[0]), min(cy + hh, im.size[1])))
     crop.thumbnail((640, 640))
 
-    def enc(x):
-        b = io.BytesIO(); x.save(b, "JPEG", quality=88); return base64.b64encode(b.getvalue()).decode()
-    return enc(full), enc(crop)
+    return encode_jpeg(full), encode_jpeg(crop)
 
 
 VIEWER = """<!DOCTYPE html><html><head><meta charset="utf-8"><title>Rating packet</title>
@@ -168,19 +201,22 @@ def part_b(a, params, out):
     A = pd.read_parquet(out / "e11a_alerts.parquet")
     S = sample_b(A, params)
     priv = out / "private"; priv.mkdir(exist_ok=True)
-    S.to_parquet(priv / "e11b_key.parquet")
     imgs = {}
+    windows = []
     for r in S.itertuples():
         p = Path(a.ext_root) / r.collection / "pool" / "images" / r.file
-        f, c = item_images(r, p)
-        imgs[r.item] = (f, c)
+        full, crop, window = rating_item_images(r, p)
+        imgs[r.item] = (full, crop)
+        windows.append(window)
+    S[CROP_WINDOW] = pd.DataFrame(windows, index=S.index, columns=CROP_WINDOW, dtype="int64")
+    S.to_parquet(priv / "e11b_key.parquet")
     for rater, seed in (("Aditya", params["seed"]), ("Sahasra", params["seed"] + 1)):
         order = np.random.default_rng(seed).permutation(len(S))
         items = [dict(item=S["item"].iloc[j], full=imgs[S["item"].iloc[j]][0], crop=imgs[S["item"].iloc[j]][1]) for j in order]
         d = out / f"packet_{rater}"; d.mkdir(exist_ok=True)
         viewer(d / "index.html", rater, items, CATS)
     (out / "RATER_INSTRUCTIONS.md").write_text(
-        "# Rating the review queue\n\nEach item shows a road image with one box drawn in yellow, and a close-up of that box.\n"
+        "# Rating the review queue\n\nEach item shows a road image and a close-up. Both views mark the same area with a magenta outline.\n"
         "Choose one answer for the boxed area:\n\n- missing mapped distress (then choose longitudinal crack, transverse "
         "crack, alligator crack or pothole)\n- other distress\n- road object (patch, manhole, marking, joint)\n- not damage\n"
         "- cannot tell\n\nWork alone and do not discuss any item until both raters are done. When finished, press Save "
