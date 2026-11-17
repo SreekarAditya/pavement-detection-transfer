@@ -1,0 +1,204 @@
+recall_floor:
+  four_class: 0.3
+  pothole: 0.25
+  merged_crack: 0.3
+rule: max over other collections
+values:
+  four_class:
+    ecupdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ird
+      - svrdd
+      calibration_images: 646
+      n_flag_exceeds_calibration: false
+    ird:
+      n: 500
+      M: 400
+      n_flag_not_met_elsewhere: false
+      M_flag_not_met_elsewhere: false
+      from_collections:
+      - ecupdd
+      - svrdd
+      calibration_images: 2175
+      n_flag_exceeds_calibration: false
+    svrdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - ird
+      calibration_images: 3998
+      n_flag_exceeds_calibration: false
+    unseen:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - ird
+      - svrdd
+      calibration_images: null
+      n_flag_exceeds_calibration: false
+  merged_crack:
+    ecupdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ird
+      - svrdd
+      calibration_images: 646
+      n_flag_exceeds_calibration: false
+    ird:
+      n: 500
+      M: 400
+      n_flag_not_met_elsewhere: false
+      M_flag_not_met_elsewhere: false
+      from_collections:
+      - ecupdd
+      - svrdd
+      calibration_images: 2175
+      n_flag_exceeds_calibration: false
+    svrdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - ird
+      calibration_images: 3998
+      n_flag_exceeds_calibration: false
+    unseen:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - ird
+      - svrdd
+      calibration_images: null
+      n_flag_exceeds_calibration: false
+  pothole:
+    ecupdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - hrp4k
+      - ird
+      - kent
+      - pdd2026
+      - rome
+      - svrdd
+      calibration_images: 646
+      n_flag_exceeds_calibration: false
+    hrp4k:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - ird
+      - kent
+      - pdd2026
+      - rome
+      - svrdd
+      calibration_images: 2043
+      n_flag_exceeds_calibration: false
+    ird:
+      n: 500
+      M: 400
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: false
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - kent
+      - pdd2026
+      - rome
+      - svrdd
+      calibration_images: 2175
+      n_flag_exceeds_calibration: false
+    kent:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - ird
+      - pdd2026
+      - rome
+      - svrdd
+      calibration_images: 358
+      n_flag_exceeds_calibration: true
+    pdd2026:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - ird
+      - kent
+      - rome
+      - svrdd
+      calibration_images: 3165
+      n_flag_exceeds_calibration: false
+    rome:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - ird
+      - kent
+      - pdd2026
+      - svrdd
+      calibration_images: 1006
+      n_flag_exceeds_calibration: false
+    svrdd:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - ird
+      - kent
+      - pdd2026
+      - rome
+      calibration_images: 3998
+      n_flag_exceeds_calibration: false
+    unseen:
+      n: 500
+      M: 800
+      n_flag_not_met_elsewhere: true
+      M_flag_not_met_elsewhere: true
+      from_collections:
+      - ecupdd
+      - hrp4k
+      - ird
+      - kent
+      - pdd2026
+      - rome
+      - svrdd
+      calibration_images: null
+      n_flag_exceeds_calibration: false
