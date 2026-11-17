@@ -8,8 +8,8 @@ need RULES_SHA PARAMS_SHA
 start_task 06
 setup_env gpu
 fetch_lock
+fetch_best
 par rdd fetch_rdd
-par best fetch_best
 par ext fetch_ext ecupdd ird svrdd
 wait_all
 check_weights last "$RUN/weights_last"
