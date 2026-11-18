@@ -238,6 +238,10 @@ def compute_commit(a):
     need(not (d/"private").exists() and not (d/"heldout_labels.parquet").exists(),
          "The decision environment contains held-out labels")
     eligible=json.loads(a.eligibility.read_text())[0]
+    identity=getattr(a,"identity",dict(candidate="HighRPD v1",doi=HIGH_DOI,index=0))
+    need(eligible["release"]==identity["candidate"] and eligible["index"]==identity["index"],"Candidate identity differs")
+    if "source_identifier" in identity:
+        need(eligible.get("source_identifier")==identity["source_identifier"],"Release version differs")
     need(eligible["status"]=="eligible","The frozen eligibility check did not pass")
     for name,expected in eligible["split_sha256"].items():
         need(PC.sha(d/name)==expected,"Split digest changed")
@@ -251,7 +255,7 @@ def compute_commit(a):
     need(P.file.isin(set(cal)).all(),"Prediction contains an out-of-split item")
     N=yaml.safe_load((a.rules/"exp1_constants.yaml").read_text())["values"]["pothole"]["unseen"]
     p=(P[P.cls==POTHOLE])
-    order=audit.ordered_blocks(len(cb),[2026,303,0,0])
+    order=audit.ordered_blocks(len(cb),[2026,303,identity["index"],0])
     # Threshold sample uses unlabeled prediction confidences and all images in its selected blocks.
     limit=min(len(cb),np.searchsorted(np.cumsum(image_counts[order]),N["n"])+1)
     included=set(order[:limit])
@@ -263,7 +267,7 @@ def compute_commit(a):
     _,m,x=T.per_image_at(t)
     mb=np.bincount(ci,weights=m,minlength=len(cb))
     xb=np.bincount(ci,weights=x,minlength=len(cb))
-    o=audit.ordered_blocks(len(cb),[2026,303,0,1])
+    o=audit.ordered_blocks(len(cb),[2026,303,identity["index"],1])
     arms, first, second=audit.policies(o,image_counts,mb,xb,FLOOR)
     count=min(len(cb),np.searchsorted(np.cumsum(xb[o]),N["M"])+1)
     select=o[:count]
@@ -273,7 +277,7 @@ def compute_commit(a):
         blocks=int(count),target=int(N["M"]),recall=p,lo90=lo,hi90=hi,se=se,
         audit_shortfall=bool(xb[select].sum()<N["M"]))
     need(a.weight_sha==WEIGHT_SHA,"Locked checkpoint differs")
-    return dict(candidate="HighRPD v1",doi=HIGH_DOI,index=0,code_commit=a.code_commit,
+    return dict(**identity,code_commit=a.code_commit,
         threshold=t,threshold_images=len(sample),threshold_target=N["n"],threshold_shortfall=len(sample)<N["n"],
         selected_model="yolo12m_seed0", checkpoint_sha256=a.weight_sha, floor=FLOOR,alert_target=K,arms=arms,
         first_look=first,full_look=second,threshold_blocks=[cb[i] for i in order[:limit]],
@@ -316,7 +320,7 @@ def score(a):
     names=sorted({B[f] for f in h}); idx={b:i for i,b in enumerate(names)}
     b=np.array([idx[B[f]] for f in h])
     data=[np.bincount(b,weights=x,minlength=len(names)) for x in (al,m,n)]
-    draws=np.random.default_rng(np.random.SeedSequence([2026,305,0])).multinomial(len(names),np.full(len(names),1/len(names)),size=2000)
+    draws=np.random.default_rng(np.random.SeedSequence([2026,305,signed["index"]])).multinomial(len(names),np.full(len(names),1/len(names)),size=2000)
     alerts,matched,refs=[draws @ x for x in data]
     images=draws @ np.bincount(b,minlength=len(names))
     rr=np.divide(matched,refs,out=np.full(len(refs),np.nan),where=refs>0)
@@ -328,7 +332,7 @@ def score(a):
         outcome=("unscorable" if truth is None else "unresolved" if action=="unresolved" else
                  "correct_accept" if action=="accept" and truth>=FLOOR else "false_accept" if action=="accept" else
                  "unnecessary_adaptation" if truth>=FLOOR else "correct_adapt")
-        rows.append(dict(candidate="HighRPD v1",arm=arm,action=action,outcome=outcome,
+        rows.append(dict(candidate=signed["candidate"],arm=arm,action=action,outcome=outcome,
                          reason=item["action_reason"],labeled_images=item["images"],labeled_boxes=item["boxes"],
                          audit_blocks=item["blocks"],heldout_images=len(h),heldout_refs=int(n.sum()),
                          heldout_matched=int(m.sum()),heldout_alerts=int(al.sum()),heldout_recall=truth,
@@ -340,8 +344,9 @@ def score(a):
     write_json(a.out/"heldout_uncertainty.json",
                dict(heldout_recall_ci95=[float(x) for x in PC.pct(rr)] if np.isfinite(rr).any() else None,
                     workload_ci95=[float(x) for x in PC.pct(100*alerts/images)],bootstrap_replicates=len(draws)))
-    (a.out/"REPORT.md").write_text("# Task 3 · Committed HighRPD transfer case\n\n"
-      "The detector evaluated tiled input images. Alert workload is measured per 100 tiles. "
+    unit=getattr(a,"workload_unit","tiles")
+    (a.out/"REPORT.md").write_text(f"# Committed {signed['candidate']} transfer case\n\n"
+      f"Alert workload is measured per 100 {unit}. "
       "The frozen decision was recomputed before the held-out labels were opened. "
       "See the results table for both decision errors and unresolved cases. "
       "This is one independently produced survey case.\n")
