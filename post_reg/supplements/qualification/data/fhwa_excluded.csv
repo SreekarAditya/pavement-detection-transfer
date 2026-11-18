@@ -1,0 +1,11 @@
+site,vendor,published_verdict,locator,reason
+A,P,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+A,Q,Not EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+C,P,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+C,Q,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+D,P,Not EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+D,Q,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+F,P,Not EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+F,Q,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+H,P,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
+H,Q,EQ,Table 7 p. 92,Paired subsection measurements absent from Tables 5 and 6
