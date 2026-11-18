@@ -1,0 +1,6 @@
+# Analysis stack used for Task 08, plus YAML parsing for the frozen rules.
+numpy==2.5.4
+pandas==3.1.1
+pyarrow==26.0.1
+scipy==1.18.1
+PyYAML==6.0.3
