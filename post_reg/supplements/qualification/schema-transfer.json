@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Engineering qualification record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "requirement",
+    "evidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "qualification/1.1"
+    },
+    "requirement": {
+      "type": "object",
+      "required": [
+        "id",
+        "source",
+        "locator",
+        "measurement",
+        "unit",
+        "observation_unit",
+        "reference_population",
+        "required_evidence",
+        "operator",
+        "uncertainty"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "locator": {
+          "type": "string"
+        },
+        "measurement": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "observation_unit": {
+          "type": "string"
+        },
+        "reference_population": {
+          "type": "string"
+        },
+        "required_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "operator": {
+          "enum": [
+            "paired_equivalence",
+            "recall_lower_bound",
+            "maximum",
+            "target_band",
+            "measure",
+            "contract_repair_window",
+            "contract_crack_trigger",
+            "scanner_rci_class"
+          ]
+        },
+        "uncertainty": {
+          "type": "string"
+        },
+        "lower": {
+          "type": "number"
+        },
+        "upper": {
+          "type": "number"
+        },
+        "floor": {
+          "type": "number"
+        },
+        "alpha": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "level": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        }
+      }
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "action",
+        "reason"
+      ],
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

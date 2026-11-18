@@ -1,0 +1,30 @@
+[
+  {
+    "source": "https://morth.gov.in/sites/default/files/comprehensive_compendium_circular/2-CCC-130.248-%20AE%20RFP.pdf",
+    "locator": "§6.4.2, printed p. 114",
+    "edition": "Ministry file RW/NH-33044/02/2023-S&R (Comp No 218375), eOffice 24 October 2025",
+    "raw_snapshot_sha256": null,
+    "note": "The origin returned a browser interstitial to the file download. The official indexed §6.4.2 text was checked."
+  },
+  {
+    "source": "https://nhai.gov.in/nhai/sites/default/files/tender/OtherDocuments/4_Non_Technical_Schedules.pdf",
+    "locator": "Schedule K Annex I (iii)-(iv), PDF p. 24",
+    "edition": "Aligarh–Bhadwas bid schedules",
+    "raw_snapshot_sha256": "072ec15719cea59abb57899dcc7ef945e2c230f91c58e088cd7ea535386c6ca8",
+    "note": null
+  },
+  {
+    "source": "https://nhai.gov.in/nhai/sites/default/files/2020/Schedule_0.pdf",
+    "locator": "Schedule E Annex I (iii), PDF p. 191",
+    "edition": "Lucknow–Ayodhya EPC draft, July 2021",
+    "raw_snapshot_sha256": "70caa8bdbe13c0540799f0ca1cf40e05aa788d81ccaf7f15662f96ec5617f736",
+    "note": null
+  },
+  {
+    "source": "https://www.gov.uk/government/publications/road-network-size-and-condition-statistics-guidance/road-conditions-notes-and-definitions",
+    "locator": "RCI Green/Amber/Red thresholds",
+    "edition": "DfT notes retrieved 19 November 2026",
+    "raw_snapshot_sha256": "457926a7725206319af6879e87f2fcec78f30b1ff3c34c0a8efdbe0cea788de2",
+    "note": null
+  }
+]
