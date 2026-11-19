@@ -1,0 +1,68 @@
+# Constants for the revision analyses (RULES_revision.md). Read by post_reg/revision/pr_rev.py.
+# Registered constants (n, M, k, floors, floor grid, ceiling, interval method) are NOT repeated here: they are
+# read from the frozen post_reg/rules/params.yaml and exp1_constants.yaml, whose SHA-256 values are checked first.
+# No value below is a decision threshold; decisions reuse the registered 90% share, the +/-0.05 and +/-10%
+# tolerances, and the 5% consumer's risk.
+
+frozen:
+  rules_sha: cf1db87134e8f147054df0e9534f41fccf5d46b34c0064d36eab1c172b4cef80          # sha256 of post_reg/rules/RULES.md at post-reg-rules-v1
+  params_sha: 2623e57590da09aea111c734a79d17540676ee996b205a1efe6e91343778fb31         # sha256 of post_reg/rules/params.yaml
+  constants_sha: b0e41e96804816b8e0894e371a6c8dae628086b6a40fd76352719d8e456311e5      # sha256 of post_reg/rules/exp1_constants.yaml (post-reg-exp1-constants)
+  registered_summary_sha: 28c2dbd6dd723f36095579b6f34f0f02cde13e912244b57b480dc6e988771b77   # sha256 of selected/e1_summary.csv in post_reg_08_chain_outputs.tar.gz
+  exp18_commitments_sha: 59488ee00b01c1bf198e4a410790a4c78299362e53221bff723732e801e1ef60       # sha256 of exp18_commitments.json (Georgia and Turkiye constants)
+  evaluator_tag: qualification-evaluator-v1
+
+monte_carlo:
+  interval: 0.95                     # standard normal quantile; Morris, White and Crowther (2019)
+  split_is_unit: true                # pooled standard error = SD of per-split values / sqrt(number of splits)
+
+r1:
+  split_seeds: {first: 3001, last: 3050}   # 50 splits; seed 2026 (registered) runs separately as the gate
+  registered_seed: 2026
+  registered_draws: 2000                   # reproduction gate
+  draws: 500                               # per split; precision is reported as Monte Carlo standard error
+  draw_seed: split_seed                    # passed to the frozen chain as an in-memory copy of params["seed"]
+  detector: yolo12m_seed0
+  include_post_registration_networks: [georgia, turkiye]   # merged-crack class set, committed constants, labeled post hoc
+  sensitivity_checkpoints: {run_only_if_projected_cost_below_usd: 2.0}   # budget rule, not an analysis threshold
+
+r2:
+  candidate_thresholds: distinct_pilot_prediction_confidences
+  bound: lower_end_two_sided_90            # frozen interval method (exp3.decision_level); a one-sided 95% bound
+  nominal_guarantee: 0.95                  # follows from the bound, not chosen
+
+r3:
+  threshold_sample: whole_calibration_part
+
+r4:
+  intervals: [0.90, 0.95]                  # the two levels the frozen estimator already computes
+  finite_population_correction: report_both_always
+  near_floor: registered_recall_tolerance  # +/-0.05, from params.yaml
+  floor_grid: registered                   # exp3.floor_grid in params.yaml (0.10 to 0.60 by 0.05)
+  nominal_false_accept: registered_consumer_risk   # 0.05
+
+r5:
+  sources:
+    - {id: cfr490, name: "23 CFR 490 Subpart C (sections 490.309 to 490.319)", public: true}
+    - {id: hif18022, name: "Federal Highway Administration FHWA-HIF-18-022, Computation Procedure for the Pavement Condition Measures (2018, revised 2019)", public: true}
+    - {id: hif18032, name: "Federal Highway Administration FHWA-HIF-18-032, Interstate Highway Pavement Sampling Data Quality Management Plan (2018)", public: true}
+    - {id: state_program_1, name: "first state transportation department data quality management program by the selection rule", public: true}
+    - {id: state_program_2, name: "second such program", public: true}
+    - {id: state_program_3, name: "third such program", public: true}
+    - {id: ltpp_manual, name: "Federal Highway Administration FHWA-HRT-13-092, Long-Term Pavement Performance Distress Identification Manual", public: true}
+    - {id: nhai_1, name: "first National Highways Authority of India maintenance schedule (Schedule K or E) by the search rule, not previously used", public: true}
+    - {id: nhai_2, name: "second such schedule", public: true}
+    - {id: aashto_r85, name: "AASHTO R 85-18", public: false}   # copyrighted: hash and clause locators only
+  excluded_previous_sources: [fhwa_vendor_guideline, morth_authority_engineer_rfp, nhai_nh91_schedule_k, nhai_nh44_schedule_e, nhai_nh27_schedule_e, dft_scanner_notes]
+  state_selection_rule: "alphabetical by state name; the first three whose publicly posted program states a numeric acceptance tolerance for automated cracking data; search log kept"
+  nhai_search_rule: "nhai.gov.in tender documents, query 'Schedule K maintenance requirements potholes'; first two results not previously used; search log kept"
+  clause_rule: "every clause stating a measured quantity with a threshold, tolerance or time limit and an action"
+
+r6:
+  language: SHACL
+  validator: pyshacl
+
+r7:
+  match_iou_sweep: [0.1, 0.2, 0.3, 0.4, 0.5]   # swept and reported in full; 0.5 is the registered value
+  registered_match_iou: 0.5
+  dependence_rule: within_registered_recall_tolerance   # +/-0.05
