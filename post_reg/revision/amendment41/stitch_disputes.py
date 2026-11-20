@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
 
 import fitz
 
@@ -45,7 +46,28 @@ def reads(page):
     return list(candidates(pdf)), list(candidates(ocr))
 
 
-def verify_pages(root):
+def retry_ocr(source, page, reference):
+    """Read a narrow crop when page OCR misses the condition."""
+    # Crop around the full matched phrase, not the disputed character alone.
+    x, y, _, _ = page["render_bounds"]
+    matrix = fitz.Matrix(page["render_matrix"])
+    clip = (reference["box"] + fitz.Rect(x - 4, y - 4, x + 8, y + 4)) * ~matrix
+    observations = []
+    with fitz.open(source) as pdf:
+        sheet = pdf[page["page"] - 1]
+        clip *= sheet.rotation_matrix
+        for dpi in (300, 450, 600):
+            render = fitz.Matrix(dpi / 72, dpi / 72).prerotate(page["ocr_rotation"])
+            png = sheet.get_pixmap(matrix=render, clip=clip, colorspace=fitz.csGRAY).tobytes("png")
+            result = subprocess.run(
+                ["tesseract", "stdin", "stdout", "--dpi", str(dpi), "-l", "eng", "--psm", "7"],
+                input=png, capture_output=True, check=True, timeout=30,
+            )
+            observations.append(dict(dpi=dpi, text=result.stdout.decode().strip()))
+    return observations
+
+
+def verify_pages(root, downloads):
     manifest = json.loads((root / "MANIFEST.json").read_text())
     disputes, unmatched = [], []
     for source_id, source in manifest.items():
@@ -59,22 +81,33 @@ def verify_pages(root):
                           source_sha256=source["source_sha256"], readings_sha256=digest)
             for primary in pdf:
                 matches = [second for second in ocr if primary["box"].intersects(second["box"])]
-                if len(matches) != 1:
-                    unmatched.append(values | dict(pdf_text=primary["text"], same_region_ocr_matches=len(matches)))
+                retry = []
+                if not matches:
+                    source_file = downloads / source["source"]
+                    if hashlib.sha256(source_file.read_bytes()).hexdigest() != source["source_sha256"]:
+                        raise ValueError(f"Retry source differs: {source_file.name}")
+                    retry = retry_ocr(source_file, page, primary)
+                    matches = [m.groupdict() | {"text": m[0]} for reading in retry
+                               for m in CONDITION.finditer(reading["text"])]
+                interpretations = {(match["value"], match["unit"]) for match in matches}
+                if len(interpretations) != 1:
+                    unmatched.append(values | dict(pdf_text=primary["text"], same_region_ocr_matches=len(matches),
+                                                  crop_ocr=retry))
                     continue
-                second, = matches
-                if (primary["value"], primary["unit"]) != (second["value"], second["unit"]):
+                if (primary["value"], primary["unit"]) not in interpretations:
                     disputes.append(values | dict(status="threshold disputed", excluded=True,
-                                                   pdf_text=primary["text"], ocr_text=second["text"]))
+                                                   pdf_text=primary["text"], ocr_text=matches[0]["text"],
+                                                   crop_ocr=retry))
     return dict(disputes=disputes, unmatched_readings=unmatched, scope="recurring seal-and-stitch condition")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--readings", type=Path, required=True)
+    parser.add_argument("--downloads", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
-    result = verify_pages(args.readings)
+    result = verify_pages(args.readings, args.downloads)
     with args.out.open("x") as destination:
         json.dump(result, destination, indent=2)
         destination.write("\n")
