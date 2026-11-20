@@ -120,7 +120,12 @@ def main():
         anchors = by_id(list(csv.DictReader(source)))
         with io.TextIOWrapper(archive.extractfile("report/development/development_clauses.csv")) as handle:
             encodings = by_id(list(csv.DictReader(handle)))
-    if len(inventory) != 564 or set(inventory) != set(encodings) or set(inventory) != set(anchors):
+        with io.TextIOWrapper(archive.extractfile("report/development/development_fixtures.csv")) as handle:
+            fields = {}
+            for fixture in csv.DictReader(handle):
+                req = json.loads(fixture["record"])["requirement"]
+                fields[fixture["clause_id"]] = (req["measurement"], req["unit"])
+    if len(inventory) != 564 or any(set(inventory) != set(x) for x in (encodings, anchors, fields)):
         raise ValueError("Development transcript inputs must cover the frozen 564 IDs")
 
     documents = {}
@@ -148,7 +153,7 @@ def main():
         transcript.append(dict(clause_id=key, source_id=row["source_id"], locator=row["locator"],
                                source_sha256=source_sha, text=span, text_sha256=digest(span.encode()),
                                check_a=check_a, check_b=check_b, status="span unverified" if reasons else "verified",
-                               reason="; ".join(reasons), measurement=row["quantity"], unit=row["unit"],
+                               reason="; ".join(reasons), measurement=fields[key][0], unit=fields[key][1],
                                threshold_or_limit=row["threshold_or_limit"], comparison=comparison))
     with args.out.open("x") as out:
         json.dump(transcript, out, ensure_ascii=False, indent=2)
