@@ -44,6 +44,12 @@ run_cpu() {
           --registered "$T08/selected/e1_summary.csv" --ext18 "$E18" --pred18 "$PRED18")
   export PR_WORKERS=1
 
+  log "input preflight: required chain files and symlinks"
+  python "$REV/preflight_inputs.py" --root "$LOCK" --rules "$RULES" \
+      --t07 "$T07" --t08 "$T08" --ext18 "$E18" --pred18 "$PRED18" \
+      >"$LOGDIR/input_preflight.log" 2>&1 \
+    || { cat "$LOGDIR/input_preflight.log" >&2; die "input preflight failed before the gate"; }
+
   # 1. Gate: registered split, 2,000 draws, must equal the registered summary exactly; R7 gate at 0.5 likewise.
   log "gate: registered split (seed 2026, 2000 draws) and matching at 0.5"
   par gate_split python "$REV/pr_rev.py" split --seed 2026 --draws 2000 --out "$OUT/gate/seed_2026" "${COMMON[@]}"
