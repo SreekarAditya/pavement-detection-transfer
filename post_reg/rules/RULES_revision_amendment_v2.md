@@ -1,6 +1,6 @@
 # Revision analyses: amendment 2 (R5 expected answers)
 
-Status: draft for approval. This amendment changes only Section R5, "Fixtures and expected answers", of `RULES_revision.md` (tag `post-reg-revision-v1`). Every other section of that file, including R1 to R4, R6 and R7 and the runs made under it, is unchanged and stays in force. The amendment becomes binding when it is committed with the files it names and tagged `post-reg-revision-v2`.
+Status: approved by the corresponding author on 20 November 2026. This amendment changes only Section R5, "Fixtures and expected answers", of `RULES_revision.md` (tag `post-reg-revision-v1`). Every other section of that file, including R1 to R4, R6 and R7 and the runs made under it, is unchanged and stays in force. The amendment becomes binding when it is committed with the files it names and tagged `post-reg-revision-v2`.
 
 ## Why the change, and why it is allowed now
 
