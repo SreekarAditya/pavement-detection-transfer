@@ -26,7 +26,7 @@ SOURCES = {
     "m2s": "https://huggingface.co/datasets/DarrylT/M2S-RoAD/resolve/bcc040c0fdff72c3c7f3189849e28b588bb85af1/M2S-RoAD.zip",
 }
 LOCAL = {"capstone": PRIVATE / "capstone-v11-coco.zip",
-         "dashcam": RETRY.parents[1] / "03B/annotation_provenance/attempt_02/.control/dashcam-v14-coco.zip"}
+         "dashcam": RETRY.parents[2] / "03B/annotation_provenance/attempt_02/.control/dashcam-v14-coco.zip"}
 
 
 def fetch(name, source_size, expected):
