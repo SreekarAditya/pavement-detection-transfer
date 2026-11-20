@@ -95,8 +95,12 @@ PROJECTION
 }
 
 run_clauses() {
-  need ANSWERS_SHA REVISION_SHA REVISION_PARAMS_SHA T08
+  need ANSWERS_SHA FORMS_SHA AMENDMENT_SHA REVISION_SHA REVISION_PARAMS_SHA
   check_revision_tag
+  [ "$(sha256sum "$RULES/RULES_revision_amendment_v2.md" | cut -d' ' -f1)" = "$AMENDMENT_SHA" ] || die "amendment 2 hash differs"
+  F="$WS/run/inputs/clause_forms.csv"          # private copy of the completed forms, sent from the Mac
+  [ "$(sha256sum "$F" | cut -d' ' -f1)" = "$FORMS_SHA" ] || die "clause form file hash differs from the committed hash"
+  grep -q "$FORMS_SHA" "$REV/clauses/ANSWERS_SHA256.txt" || die "forms hash not among the committed hashes"
   A="$WS/run/inputs/revision_answers.csv"     # private copy (holds short AASHTO R 85 quotes), sent from the Mac
   C="$REV/clauses/ANSWERS_SHA256.txt"         # committed at tag post-reg-revision-answers
   [ -f "$C" ] || die "committed answer hash missing: answers tag not in the files sent"
@@ -107,7 +111,7 @@ run_clauses() {
   uv pip install -q pyshacl rdflib
   python "$REV/pr_rev.py" clauses --fixtures "$REV/clauses/fixtures.csv" --answers "$A" \
          --inventory "$REV/clauses/clause_inventory.csv" --shapes "$REV/clauses/shapes.ttl" \
-         --evaluator_tag qualification-evaluator-v1 --registered "$T08/selected/e1_summary.csv" --out "$OUT"
+         --evaluator_tag qualification-evaluator-v1 --out "$OUT"
   finish_task
 }
 
