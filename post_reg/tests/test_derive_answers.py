@@ -11,6 +11,8 @@ from derive_answers import FORM_FIELDS, LOCATOR_FIELDS, derive, write_review
 
 
 FORM = {
+    "meets_clause_rule": "yes",
+    "clause_rule_reason": "Example specifies measured length, a limit and follow-up action",
     "measured_quantity": "Example physical length",
     "unit": "m",
     "evidence_field": "length",
@@ -27,6 +29,13 @@ FORM = {
 
 
 class DeriveAnswersTests(unittest.TestCase):
+    def test_inventory_row_excluded_by_author(self):
+        form = {"meets_clause_rule": "no", "clause_rule_reason": "No measured quantity or threshold"}
+        result = derive(form, {})
+        self.assertEqual((result.status, result.answer, result.detail),
+                         ("inventory_excluded", "", form["clause_rule_reason"]))
+        self.assertEqual(derive(form | {"clause_rule_reason": ""}, {}).status, "form_insufficient")
+
     def decide(self, value, **fields):
         return derive(FORM | fields, {"length": value, "unit": "m"})
 
@@ -135,6 +144,18 @@ class DeriveAnswersTests(unittest.TestCase):
             self.assertEqual(row["provenance"], "rule text")
             with self.assertRaises(FileExistsError):
                 write_review(forms, fixtures, review)
+            with forms.open("w", newline="") as file:
+                writer = csv.DictWriter(file, (*LOCATOR_FIELDS, *FORM_FIELDS))
+                writer.writeheader()
+                writer.writerow({"clause_id": "one", "meets_clause_rule": "no",
+                                 "clause_rule_reason": "Example has no measured quantity"})
+            excluded_review = root / "excluded-review.csv"
+            write_review(forms, fixtures, excluded_review)
+            with excluded_review.open(newline="") as file:
+                excluded = next(csv.DictReader(file))
+            self.assertEqual(excluded["derivation_status"], "inventory_excluded")
+            self.assertEqual(excluded["derived_answer"], "")
+            self.assertEqual(excluded["clause_rule_reason"], "Example has no measured quantity")
 
 
 if __name__ == "__main__":

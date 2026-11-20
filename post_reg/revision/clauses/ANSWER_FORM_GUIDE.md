@@ -4,6 +4,7 @@ Complete one row per clause in the private copy of the forms. Use the cited sour
 
 | Field | Entry |
 | --- | --- |
+| `meets_clause_rule`, `clause_rule_reason` | Mark `yes` or `no` and give your reason. A `no` row is retained with its reason, skipped in derivation and excluded from scoring and the headline denominator. The report gives the 564 total and the excluded count. |
 | `measured_quantity`, `unit` | Quantity and exact observation unit. Read the fixture observations in the review sheet for the recorded units. |
 | `denominator_or_aggregation` | The denominator, aggregation or observation scope stated by the source. Enter the scope even when one observation suffices. |
 | `evidence_field`, `required_evidence` | The name of the observation to compare and a comma-separated list of all required observation names. Dots address nested fields. |

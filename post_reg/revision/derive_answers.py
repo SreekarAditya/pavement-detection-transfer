@@ -11,6 +11,7 @@ import re
 
 LOCATOR_FIELDS = ("clause_id", "source_id", "locator", "source_excerpt", "excerpt_locator")
 FORM_FIELDS = (
+    "meets_clause_rule", "clause_rule_reason",
     "measured_quantity", "unit", "evidence_field", "comparison", "threshold",
     "lower_included", "upper_included", "denominator_or_aggregation", "required_evidence",
     "action_when_true", "action_when_false", "time_limit", "document_scope",
@@ -160,6 +161,12 @@ def derive(form, evidence):
     if not any(display(form.get(field)) for field in FORM_FIELDS):
         return Outcome("awaiting_form")
     try:
+        meets_rule = read_flag(form.get("meets_clause_rule"), "meets_clause_rule")
+        reason = display(form.get("clause_rule_reason"))
+        if not reason:
+            raise FormError("clause_rule_reason is required")
+        if not meets_rule:
+            return Outcome("inventory_excluded", detail=reason)
         interpretation = read_flag(form.get("interpretation_needed"), "interpretation_needed")
         if interpretation:
             if not display(form.get("interpretation_reason")) or not display(form.get("answer_basis")):
