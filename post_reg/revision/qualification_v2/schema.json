@@ -1,0 +1,551 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Engineering qualification record v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "requirement",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "qualification/2.0"
+    },
+    "requirement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "when_true": {
+          "type": "string",
+          "minLength": 1
+        },
+        "when_false": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/comparison"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "missing_capability": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "locator",
+        "measurement",
+        "unit",
+        "when_true",
+        "when_false",
+        "required_evidence",
+        "comparison",
+        "missing_capability"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "comparison": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "scalar"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bound": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            },
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "=",
+                "!="
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "field",
+            "unit",
+            "bound",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "time_limit"
+            },
+            "mode": {
+              "const": "elapsed"
+            },
+            "start": {
+              "type": "string",
+              "minLength": 1
+            },
+            "end": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "enum": [
+                "hour",
+                "day",
+                "week",
+                "month"
+              ]
+            },
+            "bound": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            },
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "=",
+                "!="
+              ]
+            },
+            "source_unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_bound": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "start",
+            "end",
+            "unit",
+            "bound",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "time_limit"
+            },
+            "mode": {
+              "const": "date"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "=",
+                "!="
+              ]
+            },
+            "bound": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "field",
+            "op",
+            "bound"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "time_limit"
+            },
+            "mode": {
+              "const": "month_day"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "=",
+                "!="
+              ]
+            },
+            "bound": {
+              "type": "string",
+              "pattern": "^\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "field",
+            "op",
+            "bound"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "membership"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mode": {
+              "enum": [
+                "in",
+                "outside"
+              ]
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              }
+            }
+          },
+          "required": [
+            "type",
+            "field",
+            "unit",
+            "mode",
+            "values"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "compound"
+            },
+            "mode": {
+              "const": "all"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/comparison"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "conditions"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "compound"
+            },
+            "mode": {
+              "const": "any"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/comparison"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "conditions"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "compound"
+            },
+            "mode": {
+              "const": "at_least"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/comparison"
+              },
+              "minItems": 1
+            },
+            "k": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "conditions",
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "range_exclusion"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lower": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            },
+            "upper": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            },
+            "include_lower": {
+              "type": "boolean"
+            },
+            "include_upper": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "field",
+            "unit",
+            "lower",
+            "upper",
+            "include_lower",
+            "include_upper"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "cross_record"
+            },
+            "mode": {
+              "const": "section_length"
+            },
+            "begin": {
+              "type": "string",
+              "minLength": 1
+            },
+            "end": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bound": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)$"
+                }
+              ]
+            },
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "=",
+                "!="
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "begin",
+            "end",
+            "unit",
+            "bound",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "cross_record"
+            },
+            "mode": {
+              "const": "coincident_boundaries"
+            },
+            "begin": {
+              "type": "string",
+              "minLength": 1
+            },
+            "end": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "link_field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "linked_records": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "type",
+            "mode",
+            "begin",
+            "end",
+            "unit",
+            "link_field",
+            "linked_records"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

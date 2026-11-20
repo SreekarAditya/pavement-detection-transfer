@@ -1,0 +1,9 @@
+# Amendment 4 evaluator
+
+Development uses the original inventory and the sealed Amendment 3 archive. Corrections apply only to the v2 development encodings and carry source locators and reasons. A mechanical source mismatch that cannot establish the correct encoding remains unresolved. Thresholds supported only by a reference-dependent expression or a source-specific transformation are identified explicitly.
+
+The record contains the measurement, unit, required evidence, source locator, comparison and resulting actions. The evaluator uses exact decimal scalar comparisons, calendar and elapsed-time checks, class membership, compound conditions, range exclusion and checks involving linked records. Calendar increments preserve the local event date and time and clamp to the final day of a shorter month. Elapsed hour, day and week comparisons use timezone-aware timestamps. A unit mismatch and a missing observation prevent a decision.
+
+The synthetic fixtures contain boundary observations, a box-only case and an incompatible-unit case. M0 tests for numeric source content. M3 checks the encoded threshold values and units. M3b checks lexicon directions attached to the same numeric threshold and reports ambiguous or uncovered matches as direction not determinable. Published outcomes are compared case by case; fixture execution alone cannot establish agreement with a published outcome.
+
+Duplicate normalization uses verbatim clause text, structured source project names and chainages. Page passages and inventory summaries are not substitute inputs for verbatim clauses. Keep development copies of licensed materials private and publish hashes and locators. Pooled unique counts and per-source unique counts use the same duplicate membership, excluding any group that matches a development clause. A program flagged by the federal sample-plan text search is removed only from the designated comparison.

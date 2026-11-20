@@ -1,0 +1,286 @@
+{
+  "number_words": {
+    "zero": 0,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+    "thirteen": 13,
+    "fourteen": 14,
+    "fifteen": 15,
+    "sixteen": 16,
+    "seventeen": 17,
+    "eighteen": 18,
+    "nineteen": 19,
+    "twenty": 20,
+    "thirty": 30,
+    "forty": 40,
+    "fifty": 50,
+    "sixty": 60,
+    "seventy": 70,
+    "eighty": 80,
+    "ninety": 90,
+    "once": 1,
+    "twice": 2,
+    "half": 0.5,
+    "quarter": 0.25
+  },
+  "scales": {
+    "hundred": 100,
+    "thousand": 1000,
+    "million": 1000000
+  },
+  "months": {
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12
+  },
+  "units": {
+    "mm": [
+      "mm",
+      "millimeter",
+      "millimeters",
+      "millimetre",
+      "millimetres"
+    ],
+    "cm": [
+      "cm",
+      "centimeter",
+      "centimeters",
+      "centimetre",
+      "centimetres"
+    ],
+    "m": [
+      "m",
+      "meter",
+      "meters",
+      "metre",
+      "metres"
+    ],
+    "km": [
+      "km",
+      "kilometer",
+      "kilometers",
+      "kilometre",
+      "kilometres"
+    ],
+    "ft": [
+      "ft",
+      "feet",
+      "foot"
+    ],
+    "in": [
+      "in",
+      "in.",
+      "inch",
+      "inches"
+    ],
+    "mi": [
+      "mi",
+      "mile",
+      "miles"
+    ],
+    "sq m": [
+      "m2",
+      "m²",
+      "square meter",
+      "square meters",
+      "square metre",
+      "square metres"
+    ],
+    "sq ft": [
+      "ft2",
+      "ft²",
+      "square foot",
+      "square feet",
+      "sq.ft.",
+      "sq ft"
+    ],
+    "percent": [
+      "%",
+      "percent",
+      "percentage",
+      "percentage point",
+      "percentage points"
+    ],
+    "hour": [
+      "h",
+      "hr",
+      "hrs",
+      "hour",
+      "hours"
+    ],
+    "day": [
+      "d",
+      "day",
+      "days"
+    ],
+    "week": [
+      "week",
+      "weeks"
+    ],
+    "month": [
+      "month",
+      "months",
+      "calendar month",
+      "calendar months"
+    ],
+    "year": [
+      "yr",
+      "year",
+      "years",
+      "annual",
+      "annually",
+      "yearly"
+    ],
+    "degree": [
+      "degree",
+      "degrees",
+      "°"
+    ],
+    "degF": [
+      "degf",
+      "°f",
+      "fahrenheit"
+    ],
+    "px": [
+      "px",
+      "pixel",
+      "pixels"
+    ],
+    "count": [
+      "count",
+      "number",
+      "joints",
+      "cracks",
+      "sites",
+      "images",
+      "runs",
+      "zones",
+      "points",
+      "directions",
+      "sections",
+      "samples"
+    ],
+    "code": [
+      "code",
+      "coded",
+      "surface type"
+    ],
+    "score": [
+      "score",
+      "rating",
+      "psr"
+    ],
+    "in/mi": [
+      "in/mi",
+      "in/mile",
+      "inches per mile",
+      "inches/mile",
+      "inch/mile"
+    ],
+    "month-day": [
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december"
+    ],
+    "date": [
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december"
+    ],
+    "percentage point": [
+      "percentage point",
+      "percentage points",
+      "percent point",
+      "percent points"
+    ],
+    "lane-mi": [
+      "lane-mi",
+      "lane mile",
+      "lane miles",
+      "lane-mile",
+      "lane-miles"
+    ]
+  },
+  "physical_quantity_terms": [
+    "length",
+    "width",
+    "depth",
+    "area",
+    "crack",
+    "rut",
+    "fault",
+    "roughness",
+    "iri",
+    "psr",
+    "rating",
+    "slope",
+    "grade",
+    "curvature",
+    "headroom",
+    "drop",
+    "distance",
+    "diameter",
+    "elapsed",
+    "interval",
+    "date",
+    "time"
+  ],
+  "physical_units": [
+    "mm",
+    "cm",
+    "m",
+    "km",
+    "ft",
+    "in",
+    "mi",
+    "sq m",
+    "sq ft",
+    "in/mi",
+    "hour",
+    "day",
+    "week",
+    "month",
+    "year",
+    "month-day",
+    "date",
+    "score",
+    "degree"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  ">=": ["at least", "not less than", "minimum", "or more"],
+  ">": ["more than", "exceeding"],
+  "<=": ["not exceeding", "not more than", "maximum", "up to", "within"],
+  "<": ["less than", "below"]
+}

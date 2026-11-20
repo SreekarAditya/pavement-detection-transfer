@@ -1,0 +1,9 @@
+{
+  "cfr490-obligate": {
+    "changes": {
+      "quantity": "increase in required fund obligation over the prior required amount",
+      "threshold_or_limit": "=2"
+    },
+    "reason": "Section 490.317(e)(1) specifies a 2 percent increase over the prior amount. The legacy 102 percent ratio and minimum comparison obscured the specified increment and its exact equality."
+  }
+}
