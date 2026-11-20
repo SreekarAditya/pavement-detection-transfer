@@ -4,6 +4,7 @@ import argparse
 from collections import defaultdict
 import csv
 import hashlib
+import io
 import json
 from pathlib import Path
 import re
@@ -46,7 +47,7 @@ def reads(page):
     return list(candidates(pdf)), list(candidates(ocr))
 
 
-def retry_ocr(source, page, reference):
+def retry_ocr(source, page, reference, *, remove_edge_rules=False):
     """Read a narrow crop when page OCR misses the condition."""
     # Crop around the full matched phrase, not the disputed character alone.
     x, y, _, _ = page["render_bounds"]
@@ -58,7 +59,21 @@ def retry_ocr(source, page, reference):
         clip *= sheet.rotation_matrix
         for dpi in (300, 450, 600):
             render = fitz.Matrix(dpi / 72, dpi / 72).prerotate(page["ocr_rotation"])
-            png = sheet.get_pixmap(matrix=render, clip=clip, colorspace=fitz.csGRAY).tobytes("png")
+            pixels = sheet.get_pixmap(matrix=render, clip=clip, colorspace=fitz.csGRAY)
+            if remove_edge_rules:
+                import numpy as np
+                from PIL import Image
+
+                image = np.frombuffer(pixels.samples, dtype=np.uint8).reshape(pixels.height, pixels.width).copy()
+                columns = np.arange(pixels.width)
+                at_edge = (columns < 0.08 * pixels.width) | (columns > 0.92 * pixels.width)
+                vertical_rule = (image < 96).mean(axis=0) > 0.85
+                image[:, at_edge & vertical_rule] = 255
+                with io.BytesIO() as buffer:
+                    Image.fromarray(image).save(buffer, format="PNG")
+                    png = buffer.getvalue()
+            else:
+                png = pixels.tobytes("png")
             result = subprocess.run(
                 ["tesseract", "stdin", "stdout", "--dpi", str(dpi), "-l", "eng", "--psm", "7"],
                 input=png, capture_output=True, check=True, timeout=30,
