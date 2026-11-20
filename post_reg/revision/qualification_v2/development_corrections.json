@@ -5,5 +5,11 @@
       "threshold_or_limit": "=2"
     },
     "reason": "Section 490.317(e)(1) specifies a 2 percent increase over the prior amount. The legacy 102 percent ratio and minimum comparison obscured the specified increment and its exact equality."
+  },
+  "hif18022-unpaved": {
+    "changes": {
+      "missing_capability": "conditional eligibility based on agency determination"
+    },
+    "reason": "The cited process requires confirmation and Division Office concurrence before treating unresolved reported sections as excluded unpaved or other surface types. The v1 class set alone omits that condition."
   }
 }

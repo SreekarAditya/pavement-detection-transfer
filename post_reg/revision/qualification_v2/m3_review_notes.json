@@ -1,0 +1,310 @@
+{
+  "cfr490-obligate": {
+    "assessment": "encoding error",
+    "reason": "Section 490.317(e)(1) specifies an increase of 2 percent over the previous required obligation. The v1 record uses a ratio of at least 102 percent and fails to retain the specified exact increment."
+  },
+  "hif18022-unpaved": {
+    "assessment": "encoding error",
+    "reason": "The cited process requires confirmation and Division Office concurrence before treating unresolved reported sections as excluded unpaved or other surface types. The v1 class set alone omits that condition."
+  },
+  "cfr490-jointed-partial-slab": {
+    "assessment": "checker limit",
+    "reason": "The cited text allocates a partial slab to the section containing a majority of its length. A strict majority corresponds to more than half even though 50 is not printed."
+  },
+  "cfr490-iri-resolution": {
+    "assessment": "checker limit",
+    "reason": "The provision describes whole-unit rounding in words and gives the unit in accompanying measurement language. The original checker does not link the prose rounding convention to the encoded unit."
+  },
+  "cfr490-asphalt-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The provision describes whole-unit rounding in words and gives the unit in accompanying measurement language. The original checker does not link the prose rounding convention to the encoded unit."
+  },
+  "cfr490-crcp-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The provision describes whole-unit rounding in words and gives the unit in accompanying measurement language. The original checker does not link the prose rounding convention to the encoded unit."
+  },
+  "cfr490-jcp-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The provision describes whole-unit rounding in words and gives the unit in accompanying measurement language. The original checker does not link the prose rounding convention to the encoded unit."
+  },
+  "cfr490-performance-resolution": {
+    "assessment": "checker limit",
+    "reason": "The cited provision says one tenth of a percent, equivalent to 0.1 percentage point for the reporting increment. The checker does not parse the fractional phrase and equivalent unit wording."
+  },
+  "cfr490-transition-int": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-transition-non": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-extract": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-notify": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-report-int": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-report-non": {
+    "assessment": "checker limit",
+    "reason": "Calendar dates are written as dates in the cited provision, whereas the v1 checker expects an independently matched unit token and treats the criterion as separate numbers."
+  },
+  "cfr490-iri-good": {
+    "assessment": "checker limit",
+    "reason": "The IRI unit is inherited from the metric definition in Section 490.311(a). The Section 490.313 rating boundaries do not repeat that unit beside each threshold."
+  },
+  "cfr490-iri-fair": {
+    "assessment": "checker limit",
+    "reason": "The IRI unit is inherited from the metric definition in Section 490.311(a). The Section 490.313 rating boundaries do not repeat that unit beside each threshold."
+  },
+  "cfr490-iri-poor": {
+    "assessment": "checker limit",
+    "reason": "The IRI unit is inherited from the metric definition in Section 490.311(a). The Section 490.313 rating boundaries do not repeat that unit beside each threshold."
+  },
+  "hif18022-psr-alternative": {
+    "assessment": "checker limit",
+    "reason": "The cited footnote writes miles per hour in full, which is absent from the original mph aliases."
+  },
+  "hif18022-fault-length": {
+    "assessment": "source locator gap",
+    "reason": "The cited extraction omits an applicable rule or its cross-reference. The generic length rule is on PDF page 26; the source scope must still be checked for this record type."
+  },
+  "hif18022-fault-coincidence": {
+    "assessment": "source locator gap",
+    "reason": "The cited extraction omits an applicable rule or its cross-reference. The generic length rule is on PDF page 26; the source scope must still be checked for this record type."
+  },
+  "hif18022-psr-length": {
+    "assessment": "source locator gap",
+    "reason": "The cited extraction omits an applicable rule or its cross-reference. The generic length rule is on PDF page 26; the source scope must still be checked for this record type."
+  },
+  "hif18022-summary-resolution": {
+    "assessment": "source locator gap",
+    "reason": "The one tenth of a percent resolution is stated in the definitions on PDF page 17. The cited passage does not contain those definitions."
+  },
+  "hif18032-laser-v": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-laser-h": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-repeat-iri": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-repeat-rut": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-repeat-fault": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-repeat-crack": {
+    "assessment": "source locator gap",
+    "reason": "The numeric weekly verification criterion appears on PDF page 21 (printed page 15). It is absent from the passage used in the archived check."
+  },
+  "hif18032-temporal-cracking": {
+    "assessment": "checker limit",
+    "reason": "The cited row gives a signed change in percent per year. The v1 checker does not link this wording to percentage-point change in a cracking percentage per year."
+  },
+  "state_program_2-rut-range": {
+    "assessment": "checker limit",
+    "reason": "The stated limits are nonnegative and no more than 3 inches. The lower bound follows from nonnegative; the wording does not print zero."
+  },
+  "state_program_2-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The table uses 1 percent as the reporting increment of a cracking percentage. The checker expects the literal percentage-point wording."
+  },
+  "state_program_3-asphalt-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-concrete-crack-resolution": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-slope-accuracy": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-slope-reproducibility": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-slope-repeatability": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-grade-accuracy": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-grade-reproducibility": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-grade-repeatability": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-slope-grade-resolution": {
+    "assessment": "checker limit",
+    "reason": "The program table expresses resolution or absolute differences in percentage measurements as percent. The v1 matching rules require the literal percentage point unit."
+  },
+  "state_program_3-imagery-crack": {
+    "assessment": "checker limit",
+    "reason": "The visible width is written 1/8 in, exactly the encoded 0.125 in. The checker does not parse fractional inches."
+  },
+  "nhai_1-daily-inspection": {
+    "assessment": "source locator gap",
+    "reason": "Schedule E Sections 6–7 appear together on PDF page 127. The archived cited page was 128. Daily and named calendar dates also require interpretation by the checker."
+  },
+  "nhai_1-pre-inspection": {
+    "assessment": "source locator gap",
+    "reason": "Schedule E Sections 6–7 appear together on PDF page 127. The archived cited page was 128. Daily and named calendar dates also require interpretation by the checker."
+  },
+  "nhai_1-pre-report": {
+    "assessment": "source locator gap",
+    "reason": "Schedule E Sections 6–7 appear together on PDF page 127. The archived cited page was 128. Daily and named calendar dates also require interpretation by the checker."
+  },
+  "nhai_1-post-inspection": {
+    "assessment": "source locator gap",
+    "reason": "Schedule E Sections 6–7 appear together on PDF page 127. The archived cited page was 128. Daily and named calendar dates also require interpretation by the checker."
+  },
+  "nhai_2-daily-inspection": {
+    "assessment": "checker limit",
+    "reason": "The cited Schedule E Section 6 says daily inspection, without the literal number one or the unit day."
+  },
+  "nhai_2-pre-inspection": {
+    "assessment": "checker limit",
+    "reason": "Schedule E Section 7 states the dates in day-first ordinal form. The checker does not recognize these calendar deadlines."
+  },
+  "nhai_2-pre-report": {
+    "assessment": "checker limit",
+    "reason": "Schedule E Section 7 states the dates in day-first ordinal form. The checker does not recognize these calendar deadlines."
+  },
+  "nhai_2-post-inspection": {
+    "assessment": "checker limit",
+    "reason": "Schedule E Section 7 states the dates in day-first ordinal form. The checker does not recognize these calendar deadlines."
+  },
+  "nhai_2-camber-minimum": {
+    "assessment": "checker limit",
+    "reason": "The provision says the shoulder camber must not be less than the carriageway camber. The encoded ratio has a 100 percent lower bound, which is implied rather than printed."
+  },
+  "nhai_2-side-slope-trigger": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-gullies": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-culverts": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-guard": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-painting": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-sign-replacement": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-markings": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-lighting-minor": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-headroom": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 184. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-toilet-clean": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 185. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-vehicles": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 185. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-crane": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 185. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-superstructure-temp": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 185. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-bearings": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-bearing-grease": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-joints": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-elastomer": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-clogging": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-bridge-guard": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-bridge-guard-hazard": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-erosion": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-wearing-coat": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-approach": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-vegetation": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-retaining": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-landslide": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  },
+  "nhai_2-snow": {
+    "assessment": "source locator gap",
+    "reason": "This row of Schedule E Annex I is on PDF page 186. The archived fixed page offset pointed to a different page."
+  }
+}
