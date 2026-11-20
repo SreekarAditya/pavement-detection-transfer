@@ -1,0 +1,11 @@
+source_id,source_file,source_url,sha256,access
+cfr490,cfr490.pdf,https://www.govinfo.gov/content/pkg/CFR-2025-title23-vol1/pdf/CFR-2025-title23-vol1-part490-subpartC.pdf,d64f76dcc376b00dcc6e8df0eca13fd83ed1fdb4fe7fe8ddff2a35a7618b8a13,public
+hif18022,hif18022.pdf,https://www.fhwa.dot.gov/tpm/guidance/hif18022.pdf,b6fb7006461b13eea586578483bc98c54cafa4cf97c8119e54b41d43d3fbfd6b,public
+hif18032,hif18032.pdf,https://www.fhwa.dot.gov/pavement/management/pubs/hif18032.pdf,c66dbb66d65d13e5512eadfc191b695f4f61fb2a439e46bdf2af9808ba6bf18a,public
+state_program_1,alaska-plan.pdf,https://aws.state.ak.us/OnlinePublicNotices/Notices/Attachment.aspx?id=129013,c30556e9ac9df2f556a1ce80a7816356842fba7d04aedef21a4c6f2dced95864,public
+state_program_2,arizona_adot_dqmp_2020-11-10_v5.pdf,https://web.archive.org/web/20230323195705/https://azdot.gov/sites/default/files/media/2021/10/adot_data_quality_mgmt_program-111020.pdf,63a5e34a77f152cfe7ecc57e4a6f76c8aca1df3d9408866106f872aa2e128360,public
+state_program_3,connecticut-plan.pdf,https://portal.ct.gov/dot/-/media/dot/policy/photolog/data-quality-management-plan_ctdot-version-20.pdf?hash=0DAC722744F96D513CB9EFC9DEEB5BCC&rev=ecc765647e6c411592ab5da1f0c06f1e,13213622e9b0e82f65c2d82f2215d1e4d736fc70965e8c1b12143bef1e139ddd,public
+ltpp_manual,ltpp_manual.pdf,https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/ltpp/13092/13092.pdf,765145d4de9fb8852e90d644b6b8f23b4031ef70a7c2b327ae0bb951bf346623,public
+nhai_1,nhai_1.pdf,https://nhai.gov.in/nhai/sites/default/files/tender/OtherDocuments/3_RFP_Volume-II_DCA__Non-Tec_Schedule.pdf,044bbef34d202fc936cb0559d63ffd473a4b509f5af726f6cf750fbfcdc42218,public
+nhai_2,nhai_2.pdf,https://nhai.gov.in/nhai/sites/default/files/tender/OtherDocuments/2_EPC_Agreement_and_Schedules.pdf,9a2e03fec500ac835c427d3a45dd9bfd050580eefdf625f33af5ac3f675e7f27,public
+aashto_r85,AASHTO_R85-18.pdf,,584e18434eb9e8abfdd13a01459641e228b3a35d606402ff6bafe94f34e71df6,restricted

@@ -1,0 +1,565 @@
+clause_id,source_id,locator,quantity,unit,threshold_or_limit,action,group_guess,short_note
+aashto_r85-map-narrow,aashto_r85,§6.4.1,mapped share of cracks narrower than 3 mm,percent,>=33,Apply crack-map acceptance minimum for the narrow width band,A,
+aashto_r85-map-intermediate,aashto_r85,§6.4.1,mapped share of cracks at least 3 mm and narrower than 5 mm,percent,>=60,Apply crack-map acceptance minimum for the intermediate width band,A,
+aashto_r85-map-wide,aashto_r85,§6.4.2,mapped share of cracks at least 5 mm wide,percent,>=85,Apply crack-map acceptance minimum for the wide width band,A,
+aashto_r85-mapped-length,aashto_r85,§6.4.3,observed fraction of an individual crack's length,percent,>=85,Classify the individual crack as mapped,A,
+aashto_r85-false-crack,aashto_r85,§6.4.4,total length of false cracking in 50 square meters of qualifying pavement,m,<3,Apply false-cracking criterion,A,
+aashto_r85-false-crack-sites,aashto_r85,§6.4.4,qualifying 0.03-km pavement samples,count,>=10,Determine false-cracking performance on a minimum sample,A,
+aashto_r85-summary-distance,aashto_r85,§7.1,distance of a reporting section,km,<=0.015,Use recommended section size to distinguish crack extent,A,
+aashto_r85-zones,aashto_r85,§7.2,measurement zones for pattern and longitudinal cracks,count,=5,Partition nontransverse pattern and longitudinal cracking,A,
+aashto_r85-manual-reference,aashto_r85,§10.3,physical pavement sections manually surveyed for truth,percent,=100,Establish ground truth by physical survey,A,
+aashto_r85-analysis-agreement,aashto_r85,§10.6,automated analysis correlation with trained observers,percent,>95,Check analytical agreement,A,
+cfr490-effective-int,cfr490,"490.309(a), p. 186",collection date,date,>2018-01-01,Apply the section's data requirements,A,Interstate
+cfr490-effective-non,cfr490,"490.309(a), p. 186",collection date,date,>2020-01-01,Apply the section's data requirements,A,Non-Interstate NHS
+cfr490-int-section,cfr490,"490.309(b)(1)(i)(C), pp. 186–187",pavement section length,mi,<=0.11,Allow section length subject to the nominal 0.10-mile segmentation rule,A,Short sections need a qualifying exception
+cfr490-int-directions,cfr490,"490.309(b)(1)(i)(D), p. 187",directions surveyed,count,>=1,Meet the Interstate direction coverage requirement,A,
+cfr490-int-frequency,cfr490,"490.309(b)(1)(i)(E), p. 187",years between surveys,year,<=1,Collect Interstate data annually,A,
+cfr490-int-extrapolate,cfr490,"490.309(b)(1)(iii), p. 187",directions surveyed,count,=1,Apply conditions to all lanes in both directions,A,
+cfr490-int-psr-speed,cfr490,"490.309(b)(1)(iv), p. 187",posted speed limit,mph,<40,Permit PSR as an alternative on the Interstate,A,
+cfr490-int-psr-value,cfr490,"490.309(b)(1)(iv)(A), p. 187",PSR,score,"[0,5]",Determine PSR on the prescribed scale,A,
+cfr490-int-psr-section,cfr490,"490.309(b)(1)(iv)(C), p. 187",PSR section length,mi,<=0.11,Apply the PSR section-length cap,A,Nominal 0.10-mile section with shorter-section exceptions
+cfr490-int-psr-direction,cfr490,"490.309(b)(1)(iv)(D), p. 187",PSR survey directions,count,>=1,Collect Interstate PSR in at least one direction,A,
+cfr490-int-psr-frequency,cfr490,"490.309(b)(1)(iv)(E), p. 187",PSR survey interval,year,<=1,Collect Interstate PSR annually,A,
+cfr490-non-iri-section,cfr490,"490.309(b)(2)(i)(C), p. 187",IRI section length,mi,<=0.11,Apply non-Interstate IRI section-length cap,A,
+cfr490-non-iri-direction,cfr490,"490.309(b)(2)(i)(D), p. 187",survey directions,count,=1,Collect non-Interstate IRI in one direction,A,
+cfr490-non-iri-frequency,cfr490,"490.309(b)(2)(i)(E), p. 187",IRI survey interval,year,<=2,Collect and report non-Interstate IRI biennially,A,
+cfr490-non-distress-section,cfr490,"490.309(b)(2)(ii)(C), p. 187",distress section length,mi,<=0.11,"Apply non-Interstate cracking, rutting and faulting section-length cap",A,
+cfr490-non-distress-direction,cfr490,"490.309(b)(2)(ii)(D), p. 187",survey directions,count,=1,Collect non-Interstate distress data in one direction,A,
+cfr490-non-distress-frequency,cfr490,"490.309(b)(2)(ii)(E), p. 187",distress survey interval,year,<=2,Collect non-Interstate distress data at least biennially,A,
+cfr490-non-psr-speed,cfr490,"490.309(b)(2)(iii), pp. 187–188",posted speed limit,mph,<40,Permit PSR as an alternative on non-Interstate NHS,A,
+cfr490-non-psr-value,cfr490,"490.309(b)(2)(iii)(A), p. 188",PSR,score,"[0,5]",Determine PSR on the prescribed scale,A,
+cfr490-non-psr-section,cfr490,"490.309(b)(2)(iii)(C), p. 188",PSR section length,mi,<=0.11,Apply the PSR section-length cap,A,
+cfr490-non-psr-directions,cfr490,"490.309(b)(2)(iii)(D), p. 188",survey directions,count,=1,Collect non-Interstate PSR in one direction,A,
+cfr490-non-psr-frequency,cfr490,"490.309(b)(2)(iii)(E), p. 188",PSR survey interval,year,<=2,Collect non-Interstate PSR at least biennially,A,
+cfr490-psr-metric-speed,cfr490,"490.311(b)(5)(i), p. 189",posted speed limit,mph,<40,Permit the State to compute PSR instead of the listed condition metrics,A,
+cfr490-iri-resolution,cfr490,"490.311(b)(1)(ii), p. 189",IRI reporting increment,in/mi,=1,Round mean left and right wheelpath IRI to whole in/mi,A,
+cfr490-asphalt-crack-resolution,cfr490,"490.311(b)(2)(i), p. 189",cracking reporting increment,percentage point,=1,Report asphalt visible cracked area share rounded to a whole percent,A,
+cfr490-rut-resolution,cfr490,"490.311(b)(2)(ii), p. 189",rut depth reporting increment,in,=0.01,Round mean wheelpath rut depth to hundredths of an inch,A,
+cfr490-crcp-crack-resolution,cfr490,"490.311(b)(3), p. 189",cracking reporting increment,percentage point,=1,Report applicable CRCP distress area to whole percent,A,
+cfr490-jcp-crack-resolution,cfr490,"490.311(b)(4)(i), p. 189",cracking reporting increment,percentage point,=1,Report jointed concrete cracked-slab share to whole percent,A,
+cfr490-fault-resolution,cfr490,"490.311(b)(4)(iii), p. 189",faulting reporting increment,in,=0.01,Round faulting to hundredths of an inch,A,
+cfr490-report-section,cfr490,"490.311(c)(1), pp. 189–190",section length,mi,<=0.11,Report geographically coincident metrics with the section-length cap,A,
+cfr490-invalid-share,cfr490,"490.313(b)(4)(i), p. 191","missing, invalid or unresolved mainline lane-mile share",percent,<=5,Apply the data completeness limit and code the reason for gaps,A,
+cfr490-good-three,cfr490,"490.313(c)(1), p. 191",good metric ratings,count,=3,Classify overall condition as Good,A,Asphalt or jointed concrete
+cfr490-poor-three,cfr490,"490.313(c)(2), p. 191",poor metric ratings,count,>=2,Classify overall condition as Poor,A,Asphalt or jointed concrete
+cfr490-fair-three,cfr490,"490.313(c)(3), p. 191",good and poor metric counts,count,good<3 and poor<2,Classify overall condition as Fair,A,Apply after the preceding clauses
+cfr490-psr-good,cfr490,"490.313(c)(4)(i), p. 191",PSR,score,>=4.0,Classify overall condition as Good,A,PSR legitimately reported below 40 mph
+cfr490-psr-fair,cfr490,"490.313(c)(4)(ii), p. 191",PSR,score,"(2.0,4.0)",Classify overall condition as Fair,A,PSR legitimately reported below 40 mph
+cfr490-psr-poor,cfr490,"490.313(c)(4)(iii), p. 191",PSR,score,<=2.0,Classify overall condition as Poor,A,PSR legitimately reported below 40 mph
+cfr490-good-crcp,cfr490,"490.313(d)(1), pp. 191–192",good CRCP metric ratings,count,=2,Classify overall condition as Good,A,
+cfr490-poor-crcp,cfr490,"490.313(d)(2), p. 192",poor CRCP metric ratings,count,=2,Classify overall condition as Poor,A,
+cfr490-fair-crcp,cfr490,"490.313(d)(3), p. 192",good and poor CRCP metric counts,count,good<2 and poor<2,Classify overall condition as Fair,A,Apply after the preceding clauses
+cfr490-psr-crcp,cfr490,"490.313(d)(4), p. 192",posted speed limit,mph,<40,Use reported PSR condition rating for CRCP,A,
+cfr490-transition-int,cfr490,"490.313(e), p. 192",collection cycle end,date,<=2018-12-31,Use IRI ratings or eligible PSR for the Interstate transition,A,
+cfr490-transition-non,cfr490,"490.313(e), p. 192",collection cycle end,date,<=2021-12-31,Use IRI ratings or eligible PSR for the non-Interstate NHS transition,A,
+cfr490-excluded-structure,cfr490,"490.313(f)(1), p. 192",structure type code,code,=1,Exclude bridge sections before pavement performance calculations,A,
+cfr490-excluded-surfaces,cfr490,"490.313(f)(1), p. 192",surface type code,code,"in {1,11}",Exclude unpaved and other surfaces before performance calculations,A,
+cfr490-performance-resolution,cfr490,"490.313(f)(2)–(5), pp. 192–193",reported performance resolution,percentage point,=0.1,Report the good and poor lane-mile measures to one decimal place,A,
+cfr490-interstate-minimum,cfr490,"490.315(a), p. 193",poor Interstate lane-miles,percent,<=5.0,Apply the Interstate minimum condition requirement,A,States other than Alaska
+cfr490-alaska-minimum,cfr490,"490.315(b), pp. 193–194",poor Interstate lane-miles,percent,<=10.0,Apply Alaska's Interstate minimum condition requirement,A,
+cfr490-annual-computation,cfr490,"490.317(a), p. 194",calculation interval,year,<=1,Calculate each state's non-bridge poor Interstate lane-mile share,A,
+cfr490-extract,cfr490,"490.317(b), p. 194",annual HPMS extract date,month-day,=06-15,Extract previous-year Interstate pavement data,A,
+cfr490-notify,cfr490,"490.317(d), p. 194",annual notice date,month-day,<10-01,Notify State DOTs of compliance,A,
+cfr490-obligate,cfr490,"490.317(e)(1), p. 194",required fund obligation relative to prior required amount after FY2013,percent,>=102,Obligate specified funds during the following fiscal year on noncompliance,A,
+cfr490-transfer,cfr490,"490.317(e)(2), p. 194",transfer as share of FY2009 Interstate Maintenance funds,percent,=10,Transfer specified funds during following fiscal year on noncompliance,A,
+cfr490-report-int,cfr490,"490.319(a), p. 194",annual Interstate HPMS submission date,month-day,<=04-15,Submit Interstate condition metrics and inventory elements,A,
+cfr490-report-non,cfr490,"490.319(b), p. 194",annual non-Interstate NHS HPMS submission date,month-day,<=06-15,Submit non-Interstate NHS condition metrics,A,
+cfr490-submit-program,cfr490,"490.319(c)(2), pp. 194–195",elapsed time from effective date,year,<=1,Submit quality management program to FHWA for approval,A,
+cfr490-iri-good,cfr490,"490.313(b)(1), p. 190",IRI,in/mi,<95,Rate the metric Good,A,
+cfr490-iri-fair,cfr490,"490.313(b)(1), p. 190",IRI,in/mi,"[95,170]",Rate the metric Fair,A,
+cfr490-iri-poor,cfr490,"490.313(b)(1), p. 190",IRI,in/mi,>170,Rate the metric Poor,A,
+cfr490-asp-crack-good,cfr490,"490.313(b)(2)(i), p. 190",asphalt wheelpath fatigue cracking,percent,<5,Rate the metric Good,A,
+cfr490-asp-crack-fair,cfr490,"490.313(b)(2)(i), p. 190",asphalt wheelpath fatigue cracking,percent,"[5,20]",Rate the metric Fair,A,
+cfr490-asp-crack-poor,cfr490,"490.313(b)(2)(i), p. 190",asphalt wheelpath fatigue cracking,percent,>20,Rate the metric Poor,A,
+cfr490-jcp-crack-good,cfr490,"490.313(b)(2)(ii), p. 190",jointed concrete cracked slabs,percent,<5,Rate the metric Good,A,
+cfr490-jcp-crack-fair,cfr490,"490.313(b)(2)(ii), p. 190",jointed concrete cracked slabs,percent,"[5,15]",Rate the metric Fair,A,
+cfr490-jcp-crack-poor,cfr490,"490.313(b)(2)(ii), p. 190",jointed concrete cracked slabs,percent,>15,Rate the metric Poor,A,
+cfr490-crcp-crack-good,cfr490,"490.313(b)(2)(iii), p. 190",CRCP cracking area,percent,<5,Rate the metric Good,A,
+cfr490-crcp-crack-fair,cfr490,"490.313(b)(2)(iii), p. 190",CRCP cracking area,percent,"[5,10]",Rate the metric Fair,A,
+cfr490-crcp-crack-poor,cfr490,"490.313(b)(2)(iii), p. 190",CRCP cracking area,percent,>10,Rate the metric Poor,A,
+cfr490-rut-good,cfr490,"490.313(b)(3)(i), pp. 190–191",asphalt rut depth,in,<0.2,Rate the metric Good,A,
+cfr490-rut-fair,cfr490,"490.313(b)(3)(i), pp. 190–191",asphalt rut depth,in,"[0.2,0.4]",Rate the metric Fair,A,
+cfr490-rut-poor,cfr490,"490.313(b)(3)(i), pp. 190–191",asphalt rut depth,in,>0.4,Rate the metric Poor,A,
+cfr490-fault-good,cfr490,"490.313(b)(3)(ii), p. 191",jointed concrete faulting,in,<0.1,Rate the metric Good,A,
+cfr490-fault-fair,cfr490,"490.313(b)(3)(ii), p. 191",jointed concrete faulting,in,"[0.1,0.15]",Rate the metric Fair,A,
+cfr490-fault-poor,cfr490,"490.313(b)(3)(ii), p. 191",jointed concrete faulting,in,>0.15,Rate the metric Poor,A,
+cfr490-inventory-int-directions,cfr490,"490.309(c)(1)(ii), p. 188",Interstate inventory survey directions,count,>=1,Collect inventory elements in at least one direction,A,
+cfr490-inventory-non-directions,cfr490,"490.309(c)(1)(ii), p. 188",non-Interstate inventory survey directions,count,=1,Collect inventory elements in one direction,A,
+cfr490-inventory-int-frequency,cfr490,"490.309(c)(1)(iii), p. 188",Interstate inventory survey interval,year,<=1,Collect inventory annually,A,
+cfr490-inventory-non-frequency,cfr490,"490.309(c)(1)(iii), p. 188",non-Interstate NHS inventory survey interval,year,<=2,Collect inventory at least biennially,A,
+cfr490-five-point-rut,cfr490,"490.309(b)(3)(vi)(A), p. 188",rut-depth collection points for the manual method,count,=5,Apply the permitted five-point method where used,A,
+cfr490-jointed-partial-slab,cfr490,"490.311(b)(4)(ii), p. 189",section share of partial slab length,percent,>50,Allocate the slab to the section containing the majority,A,
+cfr490-psr-metric-value,cfr490,"490.311(b)(5)(ii), p. 189",non-Interstate alternate PSR,score,"[0,5]",Determine the alternative metric on the prescribed scale,A,
+cfr490-metric-unique,cfr490,"490.311(c)(2), p. 190",metric values per type per measured section,count,=1,Report one value for each relevant metric type,A,
+hif18022-psr-alternative,hif18022,"§§2.2–2.3.1, pp. 5–14",posted speed limit,mph,<40,Allow PSR data as an alternative in the applicable segment and include its intersection,A,
+hif18022-iri-length,hif18022,"§2.3.2(1), Table 1, pp. 14–15",IRI end minus begin milepoint,mi,>0.110,Flag length violation,A,
+hif18022-rut-length,hif18022,"§2.3.2(2), Table 2, pp. 15–16",rutting end minus begin milepoint,mi,>0.110,Flag length violation,A,
+hif18022-rut-coincidence,hif18022,"§2.3.2(2), Table 2, pp. 15–16",matching IRI route and endpoints,count,=0,Flag coincidence violation,A,
+hif18022-crack-length,hif18022,"§2.3.2(3), p. 16",cracking end minus begin milepoint,mi,>0.110,Flag length violation,A,
+hif18022-crack-coincidence,hif18022,"§2.3.2(3), p. 16",matching IRI route and endpoints,count,=0,Flag coincidence violation,A,
+hif18022-fault-length,hif18022,"§2.3.2(4), p. 17",faulting end minus begin milepoint,mi,>0.110,Flag length violation,A,
+hif18022-fault-coincidence,hif18022,"§2.3.2(4), p. 17",matching IRI route and endpoints,count,=0,Flag coincidence violation,A,
+hif18022-psr-length,hif18022,"§2.3.2(5), p. 17",PSR end minus begin milepoint,mi,>0.110,Flag length violation,A,
+hif18022-urban,hif18022,"§2.3.4, pp. 20–21",HPMS Urban Code,code,>0,Subdivide the data to the urban aggregation,A,
+hif18022-bridge-difference,hif18022,"§2.4.1, pp. 25–28 and Tables 3–4",HPMS bridge lane-miles minus matching NBI total,lane-mi,>0,Flag the network totals for bridge reconciliation,A,
+hif18022-structure-minimum,hif18022,"§2.4.1, pp. 24–27",structure length in NBI coding,m,>=6.1,Apply the NBI bridge length filter,A,
+hif18022-unpaved,hif18022,"§2.4.2, p. 28",surface type code,code,"in {1,11}",Remove unpaved and other surfaces before measure calculation,A,
+hif18022-lane-count-int,hif18022,"Table 3, p. 29",Interstate through lane count,count,<1,Flag lane counts as unresolved,A,
+hif18022-direction-lane-count,hif18022,"Table 3, p. 29",directional through lane count,count,<1,Flag applicable directional lane counts as unresolved,A,
+hif18022-lane-count-non,hif18022,"Table 4, p. 30",non-Interstate through lane count,count,<1,Flag lane counts as unresolved,A,
+hif18022-invalid-iri,hif18022,"Tables 5–7, pp. 37–43",IRI,in/mi,<=0,"Flag missing, invalid or unresolved metric",A,
+hif18022-invalid-cracking,hif18022,"Tables 5–7, pp. 37–43",cracking share,percent,"outside [0,100]","Flag missing, invalid or unresolved metric",A,
+hif18022-invalid-rut,hif18022,"Table 5, pp. 37–39",rutting,in,<0,Flag invalid rutting for asphalt,A,
+hif18022-invalid-fault,hif18022,"Table 6, pp. 40–42",faulting,in,<0,Flag invalid faulting for jointed concrete,A,
+hif18022-invalid-psr,hif18022,"Tables 5–7, pp. 37–43",PSR,score,"outside [0.1,5.0]",Flag ineligible PSR,A,Associated records and dates are checked separately
+hif18022-invalid-psr-speed,hif18022,"Tables 5–7, pp. 37–43",posted speed limit,mph,>=40,Reject PSR substitution for missing distress metrics,A,
+hif18022-missing-share,hif18022,"§2.4.3.5, pp. 43–46","missing, invalid or unresolved mainline lane-miles",percent,<=5.0,Apply compliance limit after specified exclusions,A,
+hif18022-summary-resolution,hif18022,"§2.4.5, pp. 51–53",performance measure reporting increment,percentage point,=0.1,Report good and poor lane-mile shares to one decimal place,A,
+hif18022-table8-01,hif18022,"Table 8, order 1, p. 48","rounded IRI, cracking and rutting","in/mi,percent,in",iri<95 and cracking<5 and rutting<0.20,Classify the segment Good,A,"Asphalt. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-02,hif18022,"Table 8, order 2, p. 48","rounded IRI, cracking and faulting","in/mi,percent,in",iri<95 and cracking<5 and faulting<0.10,Classify the segment Good,A,"Jointed concrete. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-03,hif18022,"Table 8, order 3, p. 48",rounded IRI and cracking,"in/mi,percent",iri<95 and cracking<5,Classify the segment Good,A,"Crcp. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-04,hif18022,"Table 8, order 4, p. 49","rounded IRI, cracking and rutting","in/mi,percent,in","at least 2 of iri>170, cracking>20, rutting>0.40",Classify the segment Poor,A,"Asphalt. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-05,hif18022,"Table 8, order 5, p. 49","rounded IRI, cracking and faulting","in/mi,percent,in","at least 2 of iri>170, cracking>15, faulting>0.15",Classify the segment Poor,A,"Jointed concrete. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-06,hif18022,"Table 8, order 6, p. 49",rounded IRI and cracking,"in/mi,percent",iri>170 and cracking>10,Classify the segment Poor,A,"Crcp. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-07,hif18022,"Table 8, order 7, p. 49","unrounded IRI, cracking and rutting","in/mi,percent,in","iri>0 and cracking in [0,100] and rutting>=0",Classify the segment Fair,A,"Asphalt. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-08,hif18022,"Table 8, order 8, p. 50","unrounded IRI, cracking and faulting","in/mi,percent,in","iri>0 and cracking in [0,100] and faulting>=0",Classify the segment Fair,A,"Jointed concrete. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-09,hif18022,"Table 8, order 9, p. 50",unrounded IRI and cracking,"in/mi,percent","iri>0 and cracking in [0,100]",Classify the segment Fair,A,"Crcp. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-10,hif18022,"Table 8, order 10, p. 50",rounded PSR,score,"[4.0,5.0]",Classify the segment Good,A,"Eligible psr. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-11,hif18022,"Table 8, order 11, p. 50",rounded PSR,score,"[0.1,2.0]",Classify the segment Poor,A,"Eligible psr. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-table8-12,hif18022,"Table 8, order 12, p. 50",preceding classification criteria met,count,=0,Classify the segment Fair,A,"Otherwise. Apply in order. IRI and cracking round to integers, rutting and faulting to hundredths, PSR to tenths where the rule calls for rounding."
+hif18022-date-int,hif18022,"Tables 5–7, pp. 37–43",measurement year minus reporting year for Interstate,year,=0,Flag a wrong-year applicable metric,A,
+hif18022-date-non,hif18022,"Tables 5–7, pp. 37–43",measurement year minus reporting year for non-Interstate NHS,year,"[-1,0]",Flag a wrong-year applicable metric,A,
+hif18022-rainy-bridges,hif18022,"§2.4.1, pp. 24–27",gap between contiguous openings relative to the smaller opening,percent,<50,Include qualifying contiguous openings when identifying structures,A,
+hif18032-accredit-crack,hif18032,"Manual rater accreditation, pp. 6–7",consensus-reference cracks identified on each of four jointed concrete sections,percent,>=85,Accredit rater if the required crack agreement is met,A,
+hif18032-iri-accuracy,hif18032,"Equipment certification, p. 8",profiler IRI error at 95% confidence,percent,"[-5,5]",Certify profiler accuracy,A,
+hif18032-iri-precision,hif18032,"Equipment certification, p. 8",IRI repeat error over ten profiles at 95% confidence,percent,"[-5,5]",Certify profiler precision,A,
+hif18032-iri-proval,hif18032,"Processing validation, p. 9",IRI difference from ProVAL,percent,"[-2,2]",Verify operator's analysis computation,A,
+hif18032-reference-timing,hif18032,"Validation testing procedure, p. 11",elapsed time around collection to acquire reference data,week,<=2,Collect reference evidence within the scheduled validation window,A,
+hif18032-crack-rigid-bias,hif18032,"Table 2, pp. 12–13",rigid pavement cracking percent bias,percentage point,"absolute error <= max(3,15% of reference)",Pass cracking accuracy criterion or repeat validation after reprocessing,A,
+hif18032-crack-flex-bias,hif18032,"Table 2, pp. 12–13",flexible pavement cracking percent bias,percentage point,"absolute error <= max(3,30% of reference)",Pass cracking accuracy criterion or repeat validation after reprocessing,A,
+hif18032-crack-rigid-precision,hif18032,"Table 2, pp. 12–13",rigid pavement cracking percent deviation from mean at 90% confidence,percent,"[-15,15]",Pass rigid cracking precision criterion,A,
+hif18032-crack-flex-precision,hif18032,"Table 2, pp. 12–13",flexible pavement cracking percent deviation from mean at 90% confidence,percent,"[-30,30]",Pass flexible cracking precision criterion,A,
+hif18032-joint-count,hif18032,"Table 2, pp. 12–13",JCP joint count error per 500-ft section,count,"[-2,2]",Pass joint detection criterion,A,
+hif18032-rut-bias,hif18032,"Table 2, pp. 12–13",rut depth bias,in,"[-0.08,0.08]",Pass rut depth accuracy criterion,A,
+hif18032-rut-precision,hif18032,"Table 2, pp. 12–13",rut depth deviation from mean at 90% confidence,in,"[-0.08,0.08]",Pass rut depth precision criterion,A,
+hif18032-fault-bias,hif18032,"Table 2, pp. 12–13",faulting bias,in,"[-0.05,0.05]",Pass faulting accuracy criterion,A,
+hif18032-fault-precision,hif18032,"Table 2, pp. 12–13",faulting standard deviation relative to mean,percent,<=15,Pass faulting precision criterion,A,
+hif18032-dmi-bias,hif18032,"Calibration verification, pp. 13–14",DMI bias over 1 mile,percent,<0.15,Apply DMI verification criterion,A,
+hif18032-dmi-repeat,hif18032,"Calibration verification, pp. 13–14",DMI difference between repeated runs,percent,<=0.1,Apply DMI repeatability criterion,A,
+hif18032-dmi-total,hif18032,"Calibration verification, pp. 13–14",DMI reference-to-provided aggregate difference,percent,<0.15,Apply DMI error criterion,A,
+hif18032-laser-boards,hif18032,"Calibration verification, p. 14",laser board check locations,count,>=3,Perform calibration checks at required locations,A,
+hif18032-laser-v,hif18032,"Calibration verification, p. 14",mean vertical measurement error,in,<0.05,Apply vertical laser verification criterion,A,
+hif18032-laser-h,hif18032,"Calibration verification, p. 14",mean horizontal measurement error,in,<0.15,Apply horizontal laser verification criterion,A,
+hif18032-repeat-iri,hif18032,"Calibration verification, p. 14",repeat IRI coefficient of variation,percent,<5,Apply repeatability criterion,A,
+hif18032-repeat-rut,hif18032,"Calibration verification, p. 14",rut depth repeat differences,in,"[-0.04,0.04]",Apply repeatability criterion,A,
+hif18032-repeat-fault,hif18032,"Calibration verification, p. 14",faulting repeat differences,in,"[-0.04,0.04]",Apply repeatability criterion,A,
+hif18032-repeat-crack,hif18032,"Calibration verification, p. 14",cracking coefficient of variation,percent,<15,Apply repeatability criterion,A,
+hif18032-deliver-check,hif18032,"Calibration verification, p. 15",days since verification test,day,<=3,Deliver verification data to project team,A,
+hif18032-prod-first,hif18032,"Production testing, p. 16",time from production start,week,<=2,Conduct the first monitored verification,A,
+hif18032-prod-second,hif18032,"Production testing, p. 16",data collection completion,percent,"[50,75]",Conduct the second monitored verification,A,
+hif18032-missing-consecutive,hif18032,"Review of delivered data, p. 19",consecutive missing tenth-mile sections,count,<=10,Flag and assess the need for recollection when missing extent exceeds the guideline,interpretation,Recollection also depends on the missing type and cause
+hif18032-missing-route,hif18032,"Review of delivered data, p. 19",route extent missing,percent,<=2,Flag and assess the need for recollection when missing share exceeds the guideline,interpretation,Recollection also depends on the missing type and cause
+hif18032-data-iri,hif18032,"Range checks, p. 19",IRI,in/mi,"[40,250]",Flag for review when outside expected range,A,
+hif18032-data-asp-cracking,hif18032,"Range checks, p. 19",surface type 2 cracking,percent,"[0,60]",Flag for review when outside expected range,A,
+hif18032-data-conc-cracking,hif18032,"Range checks, p. 19",surface type 3 or 5 cracking,percent,"[0,100]",Flag for review when outside expected range,A,
+hif18032-data-rut,hif18032,"Range checks, p. 19",rut depth,in,"[0,1]",Flag for review when outside expected range,A,
+hif18032-data-fault,hif18032,"Range checks, p. 20",faulting,in,"[0,1]",Flag for review when outside expected range,A,
+hif18032-data-surface,hif18032,"Range checks, p. 20",surface type code,code,"in {2,3,5}",Flag unrecognized or unpaved surface type,A,
+hif18032-data-air,hif18032,"Range checks, p. 20",air temperature,degF,"[40,100]",Flag for review when outside expected range,A,
+hif18032-data-temp,hif18032,"Range checks, p. 20",surface temperature,degF,"[20,130]",Flag for review when outside expected range,A,
+hif18032-data-speed,hif18032,"Range checks, p. 20",collection speed,mph,"[40,65]",Flag for review when outside expected range,A,
+hif18032-surface-fault,hif18032,"Consistency checks, p. 20",surface type with a faulting measurement,code,"in {2,5}",Flag an inapplicable metric,A,
+hif18032-surface-rut,hif18032,"Consistency checks, p. 20",surface type with a rutting measurement,code,"in {3,5}",Flag an inapplicable metric,A,
+hif18032-diff-rut,hif18032,"Consistency checks, p. 20",wheelpath rut-depth difference,in,<0.25,Flag for review if wheelpath difference reaches limit,A,
+hif18032-diff-iri,hif18032,"Consistency checks, p. 20",wheelpath IRI difference,in/mi,<50,Flag for review if wheelpath difference reaches limit,A,
+hif18032-temporal-iri,hif18032,"Temporal analysis, p. 20",annual IRI change,in/mi/year,"[-5,10]",Flag for review when outside expected range,A,
+hif18032-temporal-rut,hif18032,"Temporal analysis, p. 20",annual rut depth change,in/year,"[-0.05,0.1]",Flag for review when outside expected range,A,
+hif18032-temporal-fault,hif18032,"Temporal analysis, p. 20",annual faulting change,in/year,"[-0.04,0.08]",Flag for review when outside expected range,A,
+hif18032-temporal-cracking,hif18032,"Temporal analysis, p. 20",annual cracking change,percentage point/year,"[-5,10]",Flag for review when outside expected range,A,
+hif18032-stop-work,hif18032,"Acceptance of flagged data, p. 21",records flagged for the same issue,count,>10,Issue stop-work order and resolve system issue,A,
+hif18032-accredit-crcp-crack,hif18032,"Manual rater accreditation, pp. 6–7",consensus-reference cracks identified on each of four CRCP sections,percent,>=85,Certify CRCP survey rater,A,
+ltpp_manual-acp-fatigue-spacing,ltpp_manual,"ACP 1, How to Measure, pp. 4–5",spacing of short transverse cracks in wheelpath,m,<0.3,Rate the area as fatigue cracking when the other descriptors hold,A,
+ltpp_manual-acp-block-length,ltpp_manual,"ACP 2, How to Measure, p. 6",length of a block-cracking occurrence,m,>=15,Rate as block cracking,A,
+ltpp_manual-acp-edge-location,ltpp_manual,"ACP 3, Description, p. 7",edge crack distance from pavement edge,m,<=0.6,Include qualifying cracks intersecting the pavement edge,A,
+ltpp_manual-acp-edge-loss-moderate,ltpp_manual,"ACP 3, Severity Levels, p. 7",crack length with material loss,percent,<=10,Use moderate severity when some breakup and loss are present,A,
+ltpp_manual-acp-edge-loss-high,ltpp_manual,"ACP 3, Severity Levels, p. 7",crack length with material loss,percent,>10,Use high severity for considerable breakup and loss,A,
+ltpp_manual-acp-longitudinal-seal,ltpp_manual,"ACP 4a–4b, How to Measure, pp. 8–9",continuous longitudinal sealant in good condition,m,>=1,"Record as sealed, subject to whole-crack coverage for shorter cracks",A,
+ltpp_manual-acp-transverse-severity,ltpp_manual,"ACP 6, How to Measure, p. 13",portion of transverse crack at candidate severity,percent,>=10,Assign the highest qualifying severity to the whole crack,A,
+ltpp_manual-acp-transverse-seal,ltpp_manual,"ACP 6, How to Measure, p. 13",transverse crack sealed in good condition,percent,>=90,Record transverse crack as sealed,A,
+ltpp_manual-acp-transverse-length,ltpp_manual,"ACP 6, How to Measure, p. 13",transverse crack length,m,<0.3,Omit from recorded transverse cracks,A,
+ltpp_manual-acp-patch-area,ltpp_manual,"ACP 7, Description and How to Measure, pp. 16–17",replaced pavement plan area,sq m,>=0.1,Classify qualifying replacement as a patch,A,
+ltpp_manual-acp-patch-other,ltpp_manual,"ACP 7, How to Measure, p. 16",unrated qualifying area,sq m,>0.1,Record qualifying area as Other,A,
+ltpp_manual-acp-patch-rut-low,ltpp_manual,"ACP 7, Severity Levels, p. 16",patch rut depth,mm,<6,Apply low severity when associated distress is at most low and pumping is absent,A,
+ltpp_manual-acp-patch-rut-mod,ltpp_manual,"ACP 7, Severity Levels, p. 16",patch rut depth,mm,"[6,12]",Apply moderate severity subject to the remaining indicators,A,
+ltpp_manual-acp-patch-rut-high,ltpp_manual,"ACP 7, Severity Levels, p. 16",patch rut depth,mm,>12,Apply high severity,A,
+ltpp_manual-acp-hole-dimension,ltpp_manual,"ACP 8, Description and How to Measure, p. 18",minimum plan dimension or inscribed diameter,mm,>=150,Include pothole in measurement summaries if other criteria hold,A,
+ltpp_manual-acp-hole-small,ltpp_manual,"ACP 8, How to Measure, p. 18",minimum plan dimension or inscribed diameter,mm,<150,Map and comment on undersized pothole and omit it from measurement summary,A,
+ltpp_manual-acp-hole-area,ltpp_manual,"ACP 8, How to Measure, p. 18",approximate minimum pothole area,sq m,about 0.02,Use as supporting guidance and record actual dimensions and area,interpretation,The definite inclusion test uses plan dimension
+ltpp_manual-acp-hole-low,ltpp_manual,"ACP 8, Severity Levels, p. 18",maximum depth below road surface,mm,<25,Assign low severity to qualifying pothole,A,
+ltpp_manual-acp-hole-mod,ltpp_manual,"ACP 8, Severity Levels, p. 18",maximum depth below road surface,mm,"[25,50]",Assign moderate severity to qualifying pothole,A,
+ltpp_manual-acp-hole-high,ltpp_manual,"ACP 8, Severity Levels, p. 18",maximum depth below road surface,mm,>50,Assign high severity to qualifying pothole,A,
+ltpp_manual-acp-water,ltpp_manual,"ACP 15, How to Measure, p. 31",affected pavement length,m,>=1,Record water bleeding or pumping occurrence and affected length,A,
+ltpp_manual-jcp-corner-length,ltpp_manual,"JCP 1, Description, p. 36",corner break side length,m,>=0.3 and <= half slab width,Identify qualifying corner break,A,The measurement applies on each side of the corner
+ltpp_manual-jcp-corner-spall,ltpp_manual,"JCP 1, Severity Levels, p. 36",crack length spalled,percent,<=10,Apply low severity only with other listed low severity conditions,A,
+ltpp_manual-jcp-corner-spall-mod,ltpp_manual,"JCP 1, Severity Levels, p. 36",crack length with low-severity spalling,percent,>10,Apply moderate corner-break criterion when the other descriptors hold,A,
+ltpp_manual-jcp-corner-spall-high,ltpp_manual,"JCP 1, Severity Levels, p. 36",crack length with moderate-to-high spalling,percent,>10,Apply high corner-break criterion,A,
+ltpp_manual-jcp-corner-fault,ltpp_manual,"JCP 1, Severity Levels, p. 36",joint or crack faulting,mm,>=13,Assign high corner-break severity,A,
+ltpp_manual-jcp-corner-mod-fault,ltpp_manual,"JCP 1, Severity Levels, p. 36",joint or crack faulting,mm,<13,Apply moderate criterion subject to fragmentation and other terms,A,
+ltpp_manual-jcp-durability,ltpp_manual,"JCP 2, How to Measure, p. 37",affected area at a severity level,percent,>=10,Record slab and area at highest qualifying severity,A,
+ltpp_manual-jcp-transverse-severity,ltpp_manual,"JCP 4, How to Measure, p. 41",transverse crack length at candidate severity,percent,>=10,Apply highest qualifying severity to entire crack,A,
+ltpp_manual-jcp-transverse-seal,ltpp_manual,"JCP 4, How to Measure, p. 41",crack length with sealant in good condition,percent,>=90,Record as sealed,A,
+ltpp_manual-jcp-transverse-joint,ltpp_manual,"JCP 4, How to Measure, p. 41",length near joint within 0.3 m,m,>=0.3,Record near-joint portion as spall and remainder as crack,A,
+ltpp_manual-jcp-longitudinal-joint,ltpp_manual,"JCP 3, How to Measure, p. 39",length near joint within 0.3 m,m,>=0.3,Record near-joint portion as spall and remainder as crack,A,
+ltpp_manual-jcp-longitudinal-seal,ltpp_manual,"JCP 3, How to Measure, p. 39",continuous crack length in good seal condition,m,>=1,"Record as sealed, with shorter-crack whole-length rule",A,
+ltpp_manual-jcp-joint-seal-low,ltpp_manual,"JCP 5a, Severity Levels, p. 44",joint length with damage,percent,<10,Record low transverse seal damage,A,
+ltpp_manual-jcp-joint-seal-mod,ltpp_manual,"JCP 5a, Severity Levels, p. 44",joint length with damage,percent,"[10,50]",Record moderate transverse seal damage,A,
+ltpp_manual-jcp-joint-seal-high,ltpp_manual,"JCP 5a, Severity Levels, p. 44",joint length with damage,percent,>50,Record high transverse seal damage,A,
+ltpp_manual-jcp-long-joint-seal,ltpp_manual,"JCP 5b, How to Measure, p. 44",individual seal damage length,m,>=1,Record longitudinal joint seal damage,A,
+ltpp_manual-jcp-joint-spall-position,ltpp_manual,"JCP 6–7, Description, pp. 45–46",distance of concrete edge damage from face of joint,m,<=0.3,Identify qualifying joint spall,A,
+ltpp_manual-jcp-long-spall-record,ltpp_manual,"JCP 6, How to Measure, p. 45",spall length,m,>=0.1,Record longitudinal joint spall,A,
+ltpp_manual-jcp-transverse-spall-record,ltpp_manual,"JCP 7, How to Measure, p. 46",joint length affected by spalling,percent,>=10,Record transverse joint as spalled,A,
+ltpp_manual-jcp-transverse-spall-severity,ltpp_manual,"JCP 7, How to Measure, p. 46",joint length at candidate severity,percent,>=10,Use highest severity occupying qualifying length,A,
+ltpp_manual-jcp-fault-first-point,ltpp_manual,"JCP 12, How to Measure, pp. 52–53",first measurement offset from slab edge,m,=0.3,Record first fault measurement to nearest millimeter,A,
+ltpp_manual-jcp-fault-second-point,ltpp_manual,"JCP 12, How to Measure, pp. 52–53",second measurement offset from slab edge,m,=0.75,Record second fault measurement to nearest millimeter,A,
+ltpp_manual-jcp-fault-offset,ltpp_manual,"JCP 12, How to Measure, pp. 52–53",instrument shift to avoid anomaly,m,<=0.3,Offset faultmeter within cap or record null if measurement unavailable,A,
+ltpp_manual-jcp-fault-remeasure,ltpp_manual,"JCP 12, How to Measure, pp. 52–53",point-distance difference from previous survey,m,>=0.5,Re-evaluate marker distance with metric tape,A,
+ltpp_manual-jcp-drop-spacing,ltpp_manual,"JCP 13, How to Measure, p. 55",spacing along lane-to-shoulder joint,m,=15.25,Record dropoff to nearest millimeter,A,
+ltpp_manual-jcp-patch-area,ltpp_manual,"JCP 15, Description, p. 56",replacement area,sq m,>=0.1,Include qualifying replacement as patch,A,
+ltpp_manual-jcp-patch-fault,ltpp_manual,"JCP 15, Severity Levels, p. 56",patch fault or settlement depth,mm,>=6,Apply high severity criterion,interpretation,Moderate wording also reaches the exact printed boundary
+ltpp_manual-jcp-patch-other,ltpp_manual,"JCP 15, How to Measure, p. 56",unrated area,sq m,>0.1,Record as Other,A,
+ltpp_manual-jcp-water,ltpp_manual,"JCP 16, How to Measure, p. 58",affected pavement length,m,>=1,Record water bleeding and pumping,A,
+ltpp_manual-crcp-durability,ltpp_manual,"CRCP 1, How to Measure, p. 62",affected area at a severity level,percent,>=10,Assign highest qualifying severity and record count and area,A,
+ltpp_manual-crcp-long-seal,ltpp_manual,"CRCP 2, How to Measure, p. 63",continuous sealant in good condition,m,>=1,"Record as sealed, subject to shorter-crack exception",A,
+ltpp_manual-crcp-transverse-low,ltpp_manual,"CRCP 3, Severity Levels, p. 64",crack length spalled,percent,<=10,Use low transverse cracking severity,A,
+ltpp_manual-crcp-transverse-mod,ltpp_manual,"CRCP 3, Severity Levels, p. 64",crack length spalled,percent,"(10,50]",Use moderate transverse cracking severity,A,
+ltpp_manual-crcp-transverse-high,ltpp_manual,"CRCP 3, Severity Levels, p. 64",crack length spalled,percent,>50,Use high transverse cracking severity,A,
+ltpp_manual-crcp-joint-distance,ltpp_manual,"CRCP 8, Severity Levels, p. 72",inspection distance from transverse construction joint,m,<=0.6,Use included spalling and faulting to rate deterioration,A,
+ltpp_manual-crcp-joint-breakup-mod,ltpp_manual,"CRCP 8, Severity Levels, p. 72",spalling width within joint inspection zone,mm,<75,Apply moderate criterion if spalling is present,A,
+ltpp_manual-crcp-joint-breakup-high,ltpp_manual,"CRCP 8, Severity Levels, p. 72",spalling width with breakup within joint zone,mm,>=75,Apply high criterion,A,
+ltpp_manual-crcp-drop-spacing,ltpp_manual,"CRCP 9, How to Measure, p. 75",spacing along lane-to-shoulder joint,m,=15.25,Record dropoff to nearest millimeter,A,
+ltpp_manual-crcp-patch-area,ltpp_manual,"CRCP 11, Description, p. 76",replacement area,sq m,>=0.1,Record qualifying replacement as patch,A,
+ltpp_manual-crcp-patch-fault,ltpp_manual,"CRCP 11, Severity Levels, p. 76",patch fault or settlement depth,mm,>=6,Apply high severity criterion,interpretation,Moderate wording also reaches the exact printed boundary
+ltpp_manual-crcp-patch-other,ltpp_manual,"CRCP 11, How to Measure, pp. 76–77",unrated area,sq m,>0.1,Record as Other,A,
+ltpp_manual-crcp-punch-width-low,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout spall width,mm,<75,Apply low severity subject to fault and material loss provisions,A,
+ltpp_manual-crcp-punch-depth-low,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout fault,mm,<6,Apply low severity subject to other indicators,A,
+ltpp_manual-crcp-punch-width-mod,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout spall width,mm,"[75,150)",Apply moderate criterion,A,
+ltpp_manual-crcp-punch-depth-mod,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout fault,mm,"[6,13)",Apply moderate criterion,A,
+ltpp_manual-crcp-punch-width-high,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout spall width,mm,>=150,Assign high severity,A,
+ltpp_manual-crcp-punch-depth-high,ltpp_manual,"CRCP 12, Severity Levels, p. 78",punchout depression,mm,>=13,Assign high severity,A,
+ltpp_manual-crcp-punch-spacing,ltpp_manual,"CRCP 12, How to Measure, p. 79",spacing of transverse cracks around enclosed area,m,"(0.6,1]",Rate moderate or high punchout when other damage conditions hold,A,
+ltpp_manual-crcp-spall-position,ltpp_manual,"CRCP 13, Description, p. 80",distance of slab edge damage from joint,m,<=0.3,Identify qualifying longitudinal joint spall,A,
+ltpp_manual-crcp-spall-length,ltpp_manual,"CRCP 13, How to Measure, pp. 80–81",spall length,m,>=0.1,Record qualifying longitudinal joint spalls,A,
+ltpp_manual-crcp-water,ltpp_manual,"CRCP 14, How to Measure, p. 82",affected pavement length,m,>=1,Record water bleeding and pumping,A,
+ltpp_manual-crcp-joint-seal,ltpp_manual,"CRCP 15, How to Measure, p. 83",individual longitudinal joint seal damage length,m,>=1,Record damaged seal length,A,
+ltpp_manual-fault-offset-appendix,ltpp_manual,"Appendix B, Fault Measurement, pp. 124–125",faultmeter offset to avoid a local anomaly,m,<=0.3,Take offset measurement or record null if it cannot be made,A,
+ltpp_manual-fault-distance-appendix,ltpp_manual,"Appendix B, Fault Measurement, pp. 124–125",change in distance to point from previous survey,m,>=0.5,Re-evaluate distance with a metric tape,A,
+ltpp_manual-fault-height-appendix,ltpp_manual,"Appendix B, Fault Measurement, p. 126",differential elevation,mm,>22,Use alternate instrument for excessive elevation differences,A,
+ltpp_manual-acp-block-width-low,ltpp_manual,"ACP 2, Severity Levels, p. 6",mean crack width,mm,<=6,Apply low width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-block-width-moderate,ltpp_manual,"ACP 2, Severity Levels, p. 6",mean crack width,mm,"(6,19]",Apply moderate width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-block-width-high,ltpp_manual,"ACP 2, Severity Levels, p. 6",mean crack width,mm,>19,Apply high width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-block-adjacent,ltpp_manual,"ACP 2, Severity Levels, p. 6",separation of random crack from primary distress,m,<=0.3,Treat random cracking as adjacent for severity assignment,A,
+ltpp_manual-acp-long-width-low,ltpp_manual,"ACP 4, Severity Levels, p. 8",mean crack width,mm,<=6,Apply low width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-long-width-moderate,ltpp_manual,"ACP 4, Severity Levels, p. 8",mean crack width,mm,"(6,19]",Apply moderate width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-long-width-high,ltpp_manual,"ACP 4, Severity Levels, p. 8",mean crack width,mm,>19,Apply high width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-long-adjacent,ltpp_manual,"ACP 4, Severity Levels, p. 8",separation of random crack from primary distress,m,<=0.3,Treat random cracking as adjacent for severity assignment,A,
+ltpp_manual-acp-reflect-width-low,ltpp_manual,"ACP 5, Severity Levels, p. 11",mean crack width,mm,<=6,Apply low width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-reflect-width-moderate,ltpp_manual,"ACP 5, Severity Levels, p. 11",mean crack width,mm,"(6,19]",Apply moderate width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-reflect-width-high,ltpp_manual,"ACP 5, Severity Levels, p. 11",mean crack width,mm,>19,Apply high width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-transverse-width-low,ltpp_manual,"ACP 6, Severity Levels, p. 13",mean crack width,mm,<=6,Apply low width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-transverse-width-moderate,ltpp_manual,"ACP 6, Severity Levels, p. 13",mean crack width,mm,"(6,19]",Apply moderate width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-transverse-width-high,ltpp_manual,"ACP 6, Severity Levels, p. 13",mean crack width,mm,>19,Apply high width-based severity,A,Review adjacent distress and sealant exceptions where specified.
+ltpp_manual-acp-transverse-adjacent,ltpp_manual,"ACP 6, Severity Levels, p. 13",separation of random crack from primary distress,m,<=0.3,Treat random cracking as adjacent for severity assignment,A,
+ltpp_manual-jcp-long-width-low,ltpp_manual,"JCP 3, Severity Levels, p. 38",crack width,mm,<3,Apply low width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-long-width-moderate,ltpp_manual,"JCP 3, Severity Levels, p. 38",crack width,mm,"[3,13)",Apply moderate width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-long-width-high,ltpp_manual,"JCP 3, Severity Levels, p. 38",crack width,mm,>=13,Apply high width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-long-spalling,ltpp_manual,"JCP 3, Severity Levels, p. 38",spalling width,mm,>=75,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-jcp-long-fault,ltpp_manual,"JCP 3, Severity Levels, p. 38",fault size,mm,>=13,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-jcp-transverse-width-low,ltpp_manual,"JCP 4, Severity Levels, p. 40",crack width,mm,<3,Apply low width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-transverse-width-moderate,ltpp_manual,"JCP 4, Severity Levels, p. 40",crack width,mm,"[3,6)",Apply moderate width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-transverse-width-high,ltpp_manual,"JCP 4, Severity Levels, p. 40",crack width,mm,>=6,Apply high width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-jcp-transverse-spalling,ltpp_manual,"JCP 4, Severity Levels, p. 40",spalling width,mm,>=75,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-jcp-transverse-fault,ltpp_manual,"JCP 4, Severity Levels, p. 40",fault size,mm,>=6,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-crcp-long-width-low,ltpp_manual,"CRCP 2, Severity Levels, p. 63",crack width,mm,<3,Apply low width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-crcp-long-width-moderate,ltpp_manual,"CRCP 2, Severity Levels, p. 63",crack width,mm,"[3,13)",Apply moderate width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-crcp-long-width-high,ltpp_manual,"CRCP 2, Severity Levels, p. 63",crack width,mm,>=13,Apply high width-based severity,A,"Include the source's spalling, faulting and sealant conditions."
+ltpp_manual-crcp-long-spalling,ltpp_manual,"CRCP 2, Severity Levels, p. 63",spalling width,mm,>=75,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-crcp-long-fault,ltpp_manual,"CRCP 2, Severity Levels, p. 63",fault size,mm,>=13,Apply the high severity criterion,A,Other severity criteria may also apply.
+ltpp_manual-jcp-long-spall-width-low,ltpp_manual,"JCP 6, Severity Levels, p. 45",spall width measured to joint face,mm,<75,Apply low width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-jcp-long-spall-width-moderate,ltpp_manual,"JCP 6, Severity Levels, p. 45",spall width measured to joint face,mm,"[75,150]",Apply moderate width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-jcp-long-spall-width-high,ltpp_manual,"JCP 6, Severity Levels, p. 45",spall width measured to joint face,mm,>150,Apply high width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-jcp-transverse-spall-width-low,ltpp_manual,"JCP 7, Severity Levels, p. 46",spall width measured to joint face,mm,<75,Apply low width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-jcp-transverse-spall-width-moderate,ltpp_manual,"JCP 7, Severity Levels, p. 46",spall width measured to joint face,mm,"[75,150]",Apply moderate width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-jcp-transverse-spall-width-high,ltpp_manual,"JCP 7, Severity Levels, p. 46",spall width measured to joint face,mm,>150,Apply high width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-crcp-long-spall-width-low,ltpp_manual,"CRCP 13, Severity Levels, p. 80",spall width measured to joint face,mm,<75,Apply low width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-crcp-long-spall-width-moderate,ltpp_manual,"CRCP 13, Severity Levels, p. 80",spall width measured to joint face,mm,"[75,150]",Apply moderate width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+ltpp_manual-crcp-long-spall-width-high,ltpp_manual,"CRCP 13, Severity Levels, p. 80",spall width measured to joint face,mm,>150,Apply high width-based severity,A,"Material loss, breakup and prior repair determine any alternate severity route."
+nhai_1-daily-inspection,nhai_1,"Schedule E §6, p. 128",interval between highway inspections,day,<=1,Inspect highway visually and record deficiencies,A,The printed tender dates apply to this source.
+nhai_1-pre-inspection,nhai_1,"Schedule E §7, p. 128",pre-monsoon annual inspection date,month-day,<06-01,"Inspect bridges, culverts and drainage systems",A,The printed tender dates apply to this source.
+nhai_1-pre-report,nhai_1,"Schedule E §7, p. 128",pre-monsoon annual report date,month-day,<06-10,Send inspection report and proposed maintenance to the engineer,A,The printed tender dates apply to this source.
+nhai_1-post-inspection,nhai_1,"Schedule E §7, p. 128",post-monsoon inspection date,month-day,<=09-30,Inspect after the monsoon and report the condition and remedial action,A,The printed tender dates apply to this source.
+nhai_1-blockade-temporary,nhai_1,"Schedule E Annex I, Roads (a)(i), p. 129",temporary restoration elapsed time after blockade,hour,<=24,Restore traffic temporarily,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-blockade-permanent,nhai_1,"Schedule E Annex I, Roads (a)(i), p. 129",permanent restoration elapsed time after blockade,day,<=15,Restore traffic permanently,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-roughness-trigger,nhai_1,"Schedule E Annex I, Roads (a)(ii), p. 129",bump-integrator roughness over 1 km,mm over 1 km,>2200,Trigger the 120-day roughness rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_1-roughness-time,nhai_1,"Schedule E Annex I, Roads (a)(ii), p. 129",roughness repair elapsed time,day,<=120,Rectify an applicable roughness deficiency,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-pothole,nhai_1,"Schedule E Annex I, Roads (a)(iii), p. 129",pothole repair elapsed time,hour,<=24,Repair confirmed pothole,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-crack,nhai_1,"Schedule E Annex I, Roads (a)(iv), p. 129",crack repair elapsed time,day,<=15,Repair road surface cracking,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-rut-trigger,nhai_1,"Schedule E Annex I, Roads (a)(v), p. 129",depression or rut depth,mm,>10,Trigger the 30-day repair allowance,A,Apply only within the specified scope of the named tender.
+nhai_1-rut-time,nhai_1,"Schedule E Annex I, Roads (a)(v), p. 129",depression or rut repair elapsed time,day,<=30,Rectify qualifying depression or rut,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-bleeding,nhai_1,"Schedule E Annex I, Roads (a)(vi), p. 129",elapsed time for bleed or skid issue,day,<=7,Rectify bleeding or skidding,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-other,nhai_1,"Schedule E Annex I, Roads (a)(vii), p. 129",elapsed time for other road distress,day,<=15,Rectify other road defects,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-edges,nhai_1,"Schedule E Annex I, Roads (a)(viii), p. 129",elapsed time for pavement edge damage,day,<=15,Rectify pavement edge damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-road-debris,nhai_1,"Schedule E Annex I, Roads (a)(ix), p. 129",elapsed time for debris or dead animal removal,hour,<=6,Clear debris or dead animals,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-camber-trigger,nhai_1,"Schedule E Annex I, Roads (b)(i), p. 129",deviation from prescribed camber or crossfall,percent,>1,Trigger 7-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_1-camber-minimum,nhai_1,"Schedule E Annex I, Roads (b)(i), p. 129",shoulder camber relative to carriageway camber,percent,>=100,Apply minimum shoulder camber condition,A,Apply only within the specified scope of the named tender.
+nhai_1-camber-time,nhai_1,"Schedule E Annex I, Roads (b)(i), p. 129",camber or crossfall rectification elapsed time,day,<=7,Correct qualifying deviation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-edge-drop-trigger,nhai_1,"Schedule E Annex I, Roads (b)(ii), p. 129",shoulder edge drop,mm,>40,Trigger 7-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_1-edge-drop-time,nhai_1,"Schedule E Annex I, Roads (b)(ii), p. 129",shoulder edge drop rectification elapsed time,day,<=7,Correct qualifying drop,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-side-slope-trigger,nhai_1,"Schedule E Annex I, Roads (b)(iii), p. 130",deviation from prescribed embankment side slope,percent,>15,Trigger the 30-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_1-side-slope-time,nhai_1,"Schedule E Annex I, Roads (b)(iii), p. 130",elapsed time for embankment slope correction,day,<=30,Correct qualifying difference,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-gullies,nhai_1,"Schedule E Annex I, Roads (b)(iv), p. 130",elapsed time after rain-cut or gully damage,day,<=7,Repair slope cuts or gullies,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-culverts,nhai_1,"Schedule E Annex I, Roads (b)(v), p. 130",elapsed time after culvert or side-drain impairment,day,<=7,Rectify damage or silting,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-desilt,nhai_1,"Schedule E Annex I, Roads (b)(vi), p. 130",urban or semi-urban drain desilting elapsed time,hour,<=24,Desilt drains,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-guard,nhai_1,"Schedule E Annex I, Roads (b)(vii), p. 130",elapsed time for railing or crash barrier repair,day,<=7,Restore barrier unless safety hazard requires immediate restoration,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-furniture,nhai_1,"Schedule E Annex I, Roads (c)(i), p. 130",elapsed time for sign or roadside furniture impairment,hour,<=48,"Restore shape, position, visibility or retroreflectivity",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-painting,nhai_1,"Schedule E Annex I, Roads (c)(ii), p. 130",elapsed time between repainting,year,<=1,Repaint listed roadside hardware annually and as required,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-sign-replacement,nhai_1,"Schedule E Annex I, Roads (c)(iii), p. 130",elapsed time for damaged or missing sign,day,<=7,Replace qualifying sign,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-markings,nhai_1,"Schedule E Annex I, Roads (c)(iv), p. 130",elapsed time for damaged road markings,day,<=7,Restore road markings,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-lighting-major,nhai_1,"Schedule E Annex I, Roads (d)(i), p. 130",elapsed time for major lighting failure,hour,<=24,Restore major lighting failure,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-lighting-minor,nhai_1,"Schedule E Annex I, Roads (d)(ii), p. 130",elapsed time for minor lighting failure,hour,<=8,Restore minor lighting fault,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-headroom,nhai_1,"Schedule E Annex I, Roads (e)(i), p. 130",clear headroom,m,<5,Trigger removal of the carriageway obstruction,A,Apply only within the specified scope of the named tender.
+nhai_1-headroom-time,nhai_1,"Schedule E Annex I, Roads (e)(i), p. 130",elapsed time for headroom or sign visibility obstruction,hour,<=24,Remove qualifying obstruction,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-fallen-trees,nhai_1,"Schedule E Annex I, Roads (e)(ii), p. 130",elapsed time after tree falls on carriageway,hour,<=4,Remove fallen tree,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-tree-replacement,nhai_1,"Schedule E Annex I, Roads (e)(iv), p. 130",elapsed time for tree or bush replacement,day,<=30,Replace tree or bush,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-sightline,nhai_1,"Schedule E Annex I, Roads (e)(v), p. 130",elapsed vegetation removal time,day,<=15,Clear vegetation affecting sightlines or structures,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-toilet-clean,nhai_1,"Schedule E Annex I, Roads (f)(i), p. 131",toilet cleaning interval,hour,<=4,Clean rest-area toilets,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-installation,nhai_1,"Schedule E Annex I, Roads (f)(ii), p. 131",elapsed time for rest-area service defects,hour,<=24,"Repair electrical, water or sanitary installation",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-facilities,nhai_1,"Schedule E Annex I, Roads (h)(i), p. 131",elapsed time for damage to facility or approach road,day,<=15,Repair covered project facility or approach road,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-vehicles,nhai_1,"Schedule E Annex I, Roads (h)(ii), p. 131",elapsed time for damaged vehicle or road debris,hour,<=4,Remove vehicle or debris,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-crane,nhai_1,"Schedule E Annex I, Roads (h)(iii), p. 131",elapsed time for mobile crane malfunction,hour,<=4,Resolve mobile crane malfunction,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-superstructure-temp,nhai_1,"Schedule E Annex I, Bridges (a)(i), p. 131",elapsed time to temporary measure,hour,<=48,"Take temporary action on damage, cracks or spalling",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-superstructure-perm,nhai_1,"Schedule E Annex I, Bridges (a)(i), p. 131",elapsed time to permanent measure,day,<=15,Take permanent action or meet the engineer's specified deadline,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-foundation,nhai_1,"Schedule E Annex I, Bridges (b)(i), p. 131",elapsed time for foundation scour or cavitation,day,<=15,Rectify scour or cavitation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-piers,nhai_1,"Schedule E Annex I, Bridges (c)(i), p. 131","elapsed time for pier, abutment or wall distress",day,<=30,Rectify applicable bridge substructure damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-bearings,nhai_1,"Schedule E Annex I, Bridges (d)(i), p. 131",elapsed time for metallic bearing defects,day,<=15,Repair relevant bearing defects,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-bearing-grease,nhai_1,"Schedule E Annex I, Bridges (d)(i), p. 131",metallic bearing greasing interval,year,<=1,Grease metallic bearings yearly,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-joints,nhai_1,"Schedule E Annex I, Bridges (e)(i), p. 131",elapsed time for malfunctioning joints,day,<=15,Repair malfunctioning joints,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-elastomer,nhai_1,"Schedule E Annex I, Bridges (f)(i), p. 131",elapsed time for deformation of elastomeric pads,day,<=7,Rectify bearing pad deformation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-clogging,nhai_1,"Schedule E Annex I, Bridges (f)(ii), p. 132",elapsed time for dirt or obstruction in bridge items,day,<=3,"Clear bearings, joints and drainage openings",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-bridge-guard,nhai_1,"Schedule E Annex I, Bridges (f)(iii), p. 132",elapsed time for damage to kerbs or barriers,day,<=3,Rectify damage when it does not pose a safety danger,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-bridge-guard-hazard,nhai_1,"Schedule E Annex I, Bridges (f)(iii), p. 132",elapsed time for kerb or barrier safety hazard,hour,<=24,Take immediate safety-related rectification within the stated limit,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-erosion,nhai_1,"Schedule E Annex I, Bridges (f)(iv), p. 132",elapsed time for bank erosion at approaches,day,<=7,Repair approach slope erosion or rain cuts,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-wearing-coat,nhai_1,"Schedule E Annex I, Bridges (f)(v), p. 132",elapsed time for wearing-coat damage,day,<=15,Repair wearing coat,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-approach,nhai_1,"Schedule E Annex I, Bridges (f)(vi), p. 132",elapsed time for approach or river-training structure distress,day,<=30,Repair qualifying damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-vegetation,nhai_1,"Schedule E Annex I, Bridges (f)(vii), p. 132",elapsed time for obstructing vegetation,day,<=15,Clear vegetation affecting structure or waterway,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-retaining,nhai_1,"Schedule E Annex I, Hill Roads (g)(i), p. 132",elapsed time for retaining or breast wall damage,day,<=7,Repair retaining or breast wall,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-landslide,nhai_1,"Schedule E Annex I, Hill Roads (g)(ii), p. 132",elapsed landslide clearance time,hour,<=12,Clear landslide,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_1-snow,nhai_1,"Schedule E Annex I, Hill Roads (g)(iii), p. 132",elapsed snow clearance time,hour,<=24,Clear snow,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-daily-inspection,nhai_2,"Schedule E §6, p. 169",interval between highway inspections,day,<=1,Inspect highway visually and record deficiencies,A,The printed tender dates apply to this source.
+nhai_2-pre-inspection,nhai_2,"Schedule E §7, p. 169",pre-monsoon annual inspection date,month-day,<06-01,"Inspect bridges, culverts and drainage systems",A,The printed tender dates apply to this source.
+nhai_2-pre-report,nhai_2,"Schedule E §7, p. 169",pre-monsoon annual report date,month-day,<06-10,Send inspection report and proposed maintenance to the engineer,A,The printed tender dates apply to this source.
+nhai_2-post-inspection,nhai_2,"Schedule E §7, p. 169",post-monsoon inspection date,month-day,<=09-30,Inspect after the monsoon and report the condition and remedial action,A,The printed tender dates apply to this source.
+nhai_2-blockade-temporary,nhai_2,"Schedule E Annex I, Roads (a)(i), p. 170",temporary restoration elapsed time after blockade,hour,<=24,Restore traffic temporarily,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-blockade-permanent,nhai_2,"Schedule E Annex I, Roads (a)(i), p. 170",permanent restoration elapsed time after blockade,day,<=15,Restore traffic permanently,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-roughness-trigger,nhai_2,"Schedule E Annex I, Roads (a)(ii), p. 170",bump-integrator roughness over 1 km,mm over 1 km,>2200,Trigger the 120-day roughness rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_2-roughness-time,nhai_2,"Schedule E Annex I, Roads (a)(ii), p. 170",roughness repair elapsed time,day,<=120,Rectify an applicable roughness deficiency,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-pothole,nhai_2,"Schedule E Annex I, Roads (a)(iii), p. 170",pothole repair elapsed time,hour,<=24,Repair confirmed pothole,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-crack,nhai_2,"Schedule E Annex I, Roads (a)(iv), p. 170",crack repair elapsed time,day,<=15,Repair road surface cracking,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-rut-trigger,nhai_2,"Schedule E Annex I, Roads (a)(v), p. 170",depression or rut depth,mm,>10,Trigger the 30-day repair allowance,A,Apply only within the specified scope of the named tender.
+nhai_2-rut-time,nhai_2,"Schedule E Annex I, Roads (a)(v), p. 170",depression or rut repair elapsed time,day,<=30,Rectify qualifying depression or rut,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-bleeding,nhai_2,"Schedule E Annex I, Roads (a)(vi), p. 170",elapsed time for bleed or skid issue,day,<=7,Rectify bleeding or skidding,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-other,nhai_2,"Schedule E Annex I, Roads (a)(vii), p. 170",elapsed time for other road distress,day,<=15,Rectify other road defects,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-edges,nhai_2,"Schedule E Annex I, Roads (a)(viii), p. 170",elapsed time for pavement edge damage,day,<=15,Rectify pavement edge damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-road-debris,nhai_2,"Schedule E Annex I, Roads (a)(ix), p. 170",elapsed time for debris or dead animal removal,hour,<=6,Clear debris or dead animals,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-camber-trigger,nhai_2,"Schedule E Annex I, Roads (b)(i), p. 170",deviation from prescribed camber or crossfall,percent,>1,Trigger 7-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_2-camber-minimum,nhai_2,"Schedule E Annex I, Roads (b)(i), p. 170",shoulder camber relative to carriageway camber,percent,>=100,Apply minimum shoulder camber condition,A,Apply only within the specified scope of the named tender.
+nhai_2-camber-time,nhai_2,"Schedule E Annex I, Roads (b)(i), p. 170",camber or crossfall rectification elapsed time,day,<=7,Correct qualifying deviation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-edge-drop-trigger,nhai_2,"Schedule E Annex I, Roads (b)(ii), p. 170",shoulder edge drop,mm,>40,Trigger 7-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_2-edge-drop-time,nhai_2,"Schedule E Annex I, Roads (b)(ii), p. 170",shoulder edge drop rectification elapsed time,day,<=7,Correct qualifying drop,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-side-slope-trigger,nhai_2,"Schedule E Annex I, Roads (b)(iii), p. 172",deviation from prescribed embankment side slope,percent,>15,Trigger the 30-day rectification allowance,A,Apply only within the specified scope of the named tender.
+nhai_2-side-slope-time,nhai_2,"Schedule E Annex I, Roads (b)(iii), p. 172",elapsed time for embankment slope correction,day,<=30,Correct qualifying difference,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-gullies,nhai_2,"Schedule E Annex I, Roads (b)(iv), p. 172",elapsed time after rain-cut or gully damage,day,<=7,Repair slope cuts or gullies,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-culverts,nhai_2,"Schedule E Annex I, Roads (b)(v), p. 172",elapsed time after culvert or side-drain impairment,day,<=7,Rectify damage or silting,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-desilt,nhai_2,"Schedule E Annex I, Roads (b)(vi), p. 172",urban or semi-urban drain desilting elapsed time,hour,<=24,Desilt drains,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-guard,nhai_2,"Schedule E Annex I, Roads (b)(vii), p. 172",elapsed time for railing or crash barrier repair,day,<=7,Restore barrier unless safety hazard requires immediate restoration,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-furniture,nhai_2,"Schedule E Annex I, Roads (c)(i), p. 172",elapsed time for sign or roadside furniture impairment,hour,<=48,"Restore shape, position, visibility or retroreflectivity",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-painting,nhai_2,"Schedule E Annex I, Roads (c)(ii), p. 172",elapsed time between repainting,year,<=1,Repaint listed roadside hardware annually and as required,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-sign-replacement,nhai_2,"Schedule E Annex I, Roads (c)(iii), p. 172",elapsed time for damaged or missing sign,day,<=7,Replace qualifying sign,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-markings,nhai_2,"Schedule E Annex I, Roads (c)(iv), p. 172",elapsed time for damaged road markings,day,<=7,Restore road markings,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-lighting-major,nhai_2,"Schedule E Annex I, Roads (d)(i), p. 172",elapsed time for major lighting failure,hour,<=24,Restore major lighting failure,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-lighting-minor,nhai_2,"Schedule E Annex I, Roads (d)(ii), p. 172",elapsed time for minor lighting failure,hour,<=8,Restore minor lighting fault,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-headroom,nhai_2,"Schedule E Annex I, Roads (e)(i), p. 172",clear headroom,m,<5,Trigger removal of the carriageway obstruction,A,Apply only within the specified scope of the named tender.
+nhai_2-headroom-time,nhai_2,"Schedule E Annex I, Roads (e)(i), p. 172",elapsed time for headroom or sign visibility obstruction,hour,<=24,Remove qualifying obstruction,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-fallen-trees,nhai_2,"Schedule E Annex I, Roads (e)(ii), p. 172",elapsed time after tree falls on carriageway,hour,<=4,Remove fallen tree,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-tree-replacement,nhai_2,"Schedule E Annex I, Roads (e)(iv), p. 172",elapsed time for tree or bush replacement,day,<=30,Replace tree or bush,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-sightline,nhai_2,"Schedule E Annex I, Roads (e)(v), p. 173",elapsed vegetation removal time,day,<=15,Clear vegetation affecting sightlines or structures,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-toilet-clean,nhai_2,"Schedule E Annex I, Roads (f)(i), p. 173",toilet cleaning interval,hour,<=4,Clean rest-area toilets,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-installation,nhai_2,"Schedule E Annex I, Roads (f)(ii), p. 173",elapsed time for rest-area service defects,hour,<=24,"Repair electrical, water or sanitary installation",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-facilities,nhai_2,"Schedule E Annex I, Roads (h)(i), p. 173",elapsed time for damage to facility or approach road,day,<=15,Repair covered project facility or approach road,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-vehicles,nhai_2,"Schedule E Annex I, Roads (h)(ii), p. 173",elapsed time for damaged vehicle or road debris,hour,<=4,Remove vehicle or debris,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-crane,nhai_2,"Schedule E Annex I, Roads (h)(iii), p. 173",elapsed time for mobile crane malfunction,hour,<=4,Resolve mobile crane malfunction,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-superstructure-temp,nhai_2,"Schedule E Annex I, Bridges (a)(i), p. 173",elapsed time to temporary measure,hour,<=48,"Take temporary action on damage, cracks or spalling",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-superstructure-perm,nhai_2,"Schedule E Annex I, Bridges (a)(i), p. 173",elapsed time to permanent measure,day,<=15,Take permanent action or meet the engineer's specified deadline,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-foundation,nhai_2,"Schedule E Annex I, Bridges (b)(i), p. 173",elapsed time for foundation scour or cavitation,day,<=15,Rectify scour or cavitation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-piers,nhai_2,"Schedule E Annex I, Bridges (c)(i), p. 173","elapsed time for pier, abutment or wall distress",day,<=30,Rectify applicable bridge substructure damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-bearings,nhai_2,"Schedule E Annex I, Bridges (d)(i), p. 174",elapsed time for metallic bearing defects,day,<=15,Repair relevant bearing defects,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-bearing-grease,nhai_2,"Schedule E Annex I, Bridges (d)(i), p. 174",metallic bearing greasing interval,year,<=1,Grease metallic bearings yearly,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-joints,nhai_2,"Schedule E Annex I, Bridges (e)(i), p. 174",elapsed time for malfunctioning joints,day,<=15,Repair malfunctioning joints,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-elastomer,nhai_2,"Schedule E Annex I, Bridges (f)(i), p. 174",elapsed time for deformation of elastomeric pads,day,<=7,Rectify bearing pad deformation,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-clogging,nhai_2,"Schedule E Annex I, Bridges (f)(ii), p. 174",elapsed time for dirt or obstruction in bridge items,day,<=3,"Clear bearings, joints and drainage openings",A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-bridge-guard,nhai_2,"Schedule E Annex I, Bridges (f)(iii), p. 174",elapsed time for damage to kerbs or barriers,day,<=3,Rectify damage when it does not pose a safety danger,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-bridge-guard-hazard,nhai_2,"Schedule E Annex I, Bridges (f)(iii), p. 174",elapsed time for kerb or barrier safety hazard,hour,<=24,Take immediate safety-related rectification within the stated limit,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-erosion,nhai_2,"Schedule E Annex I, Bridges (f)(iv), p. 174",elapsed time for bank erosion at approaches,day,<=7,Repair approach slope erosion or rain cuts,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-wearing-coat,nhai_2,"Schedule E Annex I, Bridges (f)(v), p. 174",elapsed time for wearing-coat damage,day,<=15,Repair wearing coat,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-approach,nhai_2,"Schedule E Annex I, Bridges (f)(vi), p. 174",elapsed time for approach or river-training structure distress,day,<=30,Repair qualifying damage,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-vegetation,nhai_2,"Schedule E Annex I, Bridges (f)(vii), p. 174",elapsed time for obstructing vegetation,day,<=15,Clear vegetation affecting structure or waterway,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-retaining,nhai_2,"Schedule E Annex I, Hill Roads (g)(i), p. 174",elapsed time for retaining or breast wall damage,day,<=7,Repair retaining or breast wall,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-landslide,nhai_2,"Schedule E Annex I, Hill Roads (g)(ii), p. 174",elapsed landslide clearance time,hour,<=12,Clear landslide,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+nhai_2-snow,nhai_2,"Schedule E Annex I, Hill Roads (g)(iii), p. 174",elapsed snow clearance time,hour,<=24,Clear snow,A,Elapsed time is supplied as evidence. The applicable contract and triggering observation or notice are still required.
+state_program_1-iri-resolution,state_program_1,"Table 1, p. 5",vertical profiler reporting resolution,in,=0.0004,Apply IRI deliverable resolution,A,
+state_program_1-rut-resolution,state_program_1,"Table 1, p. 5",rut depth resolution,in,=0.02,Apply rut deliverable resolution,A,
+state_program_1-iri-accuracy,state_program_1,"Table 1, p. 5",IRI compared with reference section,percent,>95,Apply the IRI accuracy criterion,A,
+state_program_1-rut-accuracy,state_program_1,"Table 1, p. 5",rut depth compared with reference section,percent,>95,Apply the rut depth accuracy criterion,A,
+state_program_1-reruns,state_program_1,"Table 1, p. 5",replicate runs,count,=10,Compute repeatability for the applicable deliverables,A,
+state_program_1-repeatability,state_program_1,"Table 1, p. 5",repeatability standard deviation over ten runs,percent,<5,"Apply repeatability criterion to IRI, rut depth and three cracking measurements",A,
+state_program_1-alligator-accuracy,state_program_1,"Table 1, p. 5",alligator cracking error relative to reference,percent,+5% of reference section,Apply the alligator cracking reference criterion,interpretation,Printed plus-sign convention is retained
+state_program_1-transverse-accuracy,state_program_1,"Table 1, p. 5",transverse crack length error relative to reference,percent,+5% of reference section,Apply transverse crack length reference criterion,interpretation,Printed plus-sign convention is retained
+state_program_1-longitudinal-accuracy,state_program_1,"Table 1, p. 5",longitudinal crack length error relative to reference,percent,+5% of reference section,Apply longitudinal crack length reference criterion,interpretation,Printed plus-sign convention is retained
+state_program_1-profiler-repeat,state_program_1,"Table 2, p. 6",profiler repeatability,percent,>95,Apply profiler certification criterion,A,
+state_program_1-profiler-accuracy,state_program_1,"Table 2, p. 6",profiler accuracy,percent,>90,Apply profiler certification criterion,A,
+state_program_1-profiler-bounce,state_program_1,"Table 2, p. 6",bounce test share of amplitude,percent,<1,Apply profiler certification criterion,A,
+state_program_1-profiler-block,state_program_1,"Table 2, p. 6",profiler block check departure,in,+0.01,Perform the block check for certification,interpretation,Printed plus-sign convention is retained
+state_program_1-dmi,state_program_1,"Table 2, p. 6",DMI pulse count length difference in five runs,in,<0.1,Validate DMI before deployment,A,
+state_program_1-lrs,state_program_1,"Table 2, p. 6",linear referencing difference from wheel or tape,percent,<0.15,Validate the linear referencing system,A,
+state_program_1-iri-validation,state_program_1,"Table 2, p. 6",IRI standard deviation over ten 0.1-mi runs,percent,<5,Validate IRI before deployment,A,
+state_program_1-rut-validation,state_program_1,"Table 2, p. 6",rutting standard deviation over ten 0.1-mi runs,percent,<5,Validate rutting before deployment,A,
+state_program_1-crack-validation,state_program_1,"Table 2, p. 6",cracking distress verification against ten runs,percent,+5% of 10 replicate runs,Validate cracking before deployment,interpretation,Printed plus-sign convention is retained
+state_program_1-coverage-validate,state_program_1,"Table 2, p. 7",network coverage,percent,=100,Validate daily coverage,A,
+state_program_1-range-iri,state_program_1,"Table 2, p. 7",IRI,in/mi,"(30,400)",Identify data outliers,A,
+state_program_1-diff-iri,state_program_1,"Table 2, p. 7",left and right IRI difference,in/mi,<50,Identify data outliers,A,
+state_program_1-range-rut,state_program_1,"Table 2, p. 7",rut depth,in,<2.0,Identify data outliers,A,
+state_program_1-diff-rut,state_program_1,"Table 2, p. 7",left and right rut difference,in,<0.25,Identify data outliers,A,
+state_program_1-any-crack,state_program_1,"Table 2, p. 7",cracking percentage,percent,<100,Identify data outliers under the cited protocol,A,
+state_program_1-network-miles,state_program_1,"Table 5, p. 10",network miles delivered excluding construction areas,percent,>=98,Return deliverable for recollection if short,A,
+state_program_1-location-metadata,state_program_1,"Table 5, p. 10",accurate route descriptions,percent,=100,Return deliverable for correction if short,A,
+state_program_1-required-elements,state_program_1,"Table 5, p. 10",accurately populated required data elements,percent,>=98,Return deliverable for correction if short,A,
+state_program_1-consecutive-completeness,state_program_1,"Table 5, p. 10",delivered data meeting missing-segment limit,percent,>=98,Return deliverable for correction if short,A,Consecutive missing segments must not exceed 500 feet
+state_program_1-gap-length,state_program_1,"Table 5, p. 10",consecutive missing segment length,ft,<=500,Apply the completeness requirement,A,
+state_program_1-metric-accept,state_program_1,"Table 5, p. 10","IRI, rutting and cracking complying with verification",percent,>=95,Return noncompliant deliverable for recollection,A,
+state_program_1-distress-accept,state_program_1,"Table 5, p. 10",distress ratings meeting protocol and quality,percent,>=95,Return noncompliant deliverable for recollection,A,
+state_program_1-route-completeness,state_program_1,"Table 5, p. 10",accurate and complete route and GPS fields,percent,=100,Return noncompliant deliverable for correction,A,
+state_program_1-imagery-accept,state_program_1,"Table 5, p. 10",pavement imagery complying with Appendix C review,percent,=100,Return noncompliant deliverable for recollection,A,
+state_program_1-profile-sampling,state_program_1,Appendix A §3.2,longitudinal profile sampling spacing,in,<=1,Apply the maximum spacing for IRI measurement,A,
+state_program_1-max-cracking-12ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=54,Check for a data outlier,A,Lane width 12 ft
+state_program_1-max-cracking-11ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=59,Check for a data outlier,A,Lane width 11 ft
+state_program_1-max-cracking-10ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=65,Check for a data outlier,A,Lane width 10 ft
+state_program_1-max-cracking-9ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=72,Check for a data outlier,A,Lane width 9 ft
+state_program_1-max-cracking-8ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=81,Check for a data outlier,A,Lane width 8 ft
+state_program_1-max-cracking-7ft,state_program_1,"Table 2, p. 7",cracking percentage,percent,<=93,Check for a data outlier,A,Lane width 7 ft
+state_program_2-iri-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",IRI measurement resolution,in/mi,=0.0001,Report IRI at stipulated resolution,A,
+state_program_2-rut-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",rut depth measurement resolution,in,=0.0001,Report average and maximum rut depth at stipulated resolution,A,
+state_program_2-fault-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",faulting resolution,in,=0.0001,Report faulting at stipulated resolution,A,
+state_program_2-crack-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",crack share measurement resolution,percentage point,=1,Report applicable HPMS and ADOT distress measures at stipulated resolution,A,
+state_program_2-crack-length-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",distress length measurement resolution,ft,=1,Report applicable crack lengths at stipulated resolution,A,
+state_program_2-crack-count-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",crack count resolution,count,=1,Report applicable crack counts,A,
+state_program_2-pothole-count-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",pothole count resolution,count,=1,Report pothole count at stipulated resolution,A,
+state_program_2-pothole-area-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",pothole area resolution,sq ft,=1,Report pothole area at stipulated resolution,A,
+state_program_2-patch-area-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",patch area resolution,sq ft,=1,Report patch area at stipulated resolution,A,
+state_program_2-defect-count-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6","patch, corner-break or punchout count resolution",count,=1,Report these distress counts,A,
+state_program_2-gps-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 6",GPS resolution,degree,=0.00000001,Report latitude and longitude at stipulated resolution,A,
+state_program_2-lin-resolution,state_program_2,"§2 Pavement Metric Collection Protocols, p. 7",linear referencing resolution,mi,=0.0001,Report segment location at stipulated resolution,A,
+state_program_2-linear-bins,state_program_2,"§2 Pavement Metric Collection Protocols, p. 7",linear segment bin size,mi,=0.1,Configure delivered road network data to the statewide bins,A,
+state_program_2-roadway-images,state_program_2,"§2 Pavement Metric Collection Protocols, p. 7",terrestrial image width and height,px,width>=1920 and height>=1080,Apply roadway image requirements,A,
+state_program_2-surface-image,state_program_2,"§2 Pavement Metric Collection Protocols, pp. 7–8",pavement image width across 12 feet,px,>=4096,Apply pavement image requirements,A,
+state_program_2-visible-crack,state_program_2,"§2 Pavement Metric Collection Protocols, p. 7",automatically identifiable crack width,in,=0.06,Verify detection and recording at the specified width,A,
+state_program_2-rater-panel,state_program_2,"§3 Manual Data Collection Protocols, p. 10",manual survey raters,count,=3,Use raters' final consensus for certification check,A,
+state_program_2-iri-entry,state_program_2,"§4 QC deliverables, p. 11",IRI control sites passing initial verification,count,=5,Verify both wheelpaths before entering or re-entering production,A,Ten runs per site
+state_program_2-iri-regular,state_program_2,"§4 QC deliverables, p. 11",IRI control sites passing regular verification,count,=1,Verify both wheelpaths biweekly,A,One run per site
+state_program_2-rut-regular,state_program_2,"§4 QC deliverables, pp. 11–12",rut control sites passing regular verification,count,=4,Verify both wheelpaths monthly,A,Three runs per site
+state_program_2-fault-entry,state_program_2,"§4 QC deliverables, p. 12",faulting sites passing entry verification,count,=1,Verify preproduction repeatability,A,Ten runs
+state_program_2-fault-regular,state_program_2,"§4 QC deliverables, p. 12",faulting sites passing regular verification,count,=1,Verify production repeatability monthly,A,Three runs
+state_program_2-distress-entry,state_program_2,"§4 QC deliverables, p. 12",distress control sites passing entry verification,count,=2,Verify accuracy and repeatability,A,One run per site with the established acceptance range
+state_program_2-confidence-sites,state_program_2,"§4 Quality control, p. 13",control runs used to establish confidence intervals,count,=10,Establish the reference interval for repeatability,A,
+state_program_2-valid-none,state_program_2,"§5 QC and QA checks, pp. 16–17","bridge, construction or lane deviation coverage length",ft,=528,Set valid collection length to zero,A,
+state_program_2-rut-range,state_program_2,"§5 QC and QA checks, p. 17",rutting and maximum rutting,in,"[0,3]",Flag out-of-range database values,A,
+state_program_2-concrete-crack-range,state_program_2,"§5 QC and QA checks, pp. 17–18",HPMS cracking on other applicable pavements,percent,"[0,100]",Check the full database for invalid cracking values,A,
+state_program_2-individual-crack-range,state_program_2,"§5 QC and QA checks, p. 18",individual cracking type severity values,percent,<=100,Review questionable cracking areas,A,
+state_program_2-pms-crack-range,state_program_2,"§5 QC and QA checks, p. 19",ADOT PMS cracking,percent,"[0,100]",Check full database for invalid values,A,
+state_program_2-year-lane,state_program_2,"§5 Compare Previous Year, p. 20",lane-width change magnitude,ft,>0.5,Check difference against previous year,A,
+state_program_2-year-iri,state_program_2,"§5 Compare Previous Year, p. 20",IRI change magnitude,in/mi,>=30,Check difference against previous year,A,
+state_program_2-year-rut,state_program_2,"§5 Compare Previous Year, p. 20",rutting change magnitude,in,>=0.3,Check asphalt difference against previous year,A,
+state_program_2-year-hpms,state_program_2,"§5 Compare Previous Year, p. 20",HPMS cracking change magnitude,percent,>=30,Check difference against previous year,A,
+state_program_2-year-pms,state_program_2,"§5 Compare Previous Year, p. 20",ADOT PMS cracking change magnitude,percent,>=30,Check asphalt difference against previous year,A,
+state_program_2-year-fault,state_program_2,"§5 Compare Previous Year, p. 20",faulting change magnitude,in,>0.2,Check concrete difference against previous year,A,
+state_program_2-qa-mileage,state_program_2,"§6 Acceptance Testing Procedures, p. 22",network miles correctly covered,percent,>=98,Return deliverable for recollection below criterion,A,
+state_program_2-qa-location,state_program_2,"§6 Acceptance Testing Procedures, p. 22","records with correct route, direction and coordinates",percent,=100,Return deliverable for correction below criterion,A,
+state_program_2-qa-required,state_program_2,"§6 Acceptance Testing Procedures, p. 22",required data elements accurately populated,percent,>=98,Return deliverable for correction below criterion,A,
+state_program_2-qa-iri,state_program_2,"§6 Acceptance Testing Procedures, p. 22",IRI meeting verification,percent,>=95,Reject deliverable for reprocessing or recollection below criterion,A,
+state_program_2-qa-rut,state_program_2,"§6 Acceptance Testing Procedures, p. 22",rut depth meeting verification,percent,>=95,Reject deliverable for reprocessing or recollection below criterion,A,
+state_program_2-qa-fault,state_program_2,"§6 Acceptance Testing Procedures, p. 22",faulting meeting verification,percent,>=95,Reject deliverable for reprocessing or recollection below criterion,A,
+state_program_2-qa-crack,state_program_2,"§6 Acceptance Testing Procedures, p. 22",cracking percentage meeting verification,percent,>=90,Reject deliverable for reprocessing or recollection below criterion,A,
+state_program_2-qa-start,state_program_2,"§6 Acceptance Testing Procedures, p. 22",accurate and complete segment starts,percent,=100,Return deliverable for correction below criterion,A,
+state_program_2-qa-photos,state_program_2,"§6 Acceptance Testing Procedures, p. 23",imagery meeting criteria within each control section,percent,>=98,Reject deliverable and recollect imagery below criterion,A,
+state_program_2-qa-photos-streak,state_program_2,"§6 Acceptance Testing Procedures, p. 23",consecutive substandard images,count,<=5,Reject deliverable and recollect imagery above criterion,A,
+state_program_2-max-hpms-cracking-12ft,state_program_2,"§5 QC and QA checks, p. 17",HPMS cracking,percent,<=54,Flag a value above the allowable width-dependent share,A,"Asphalt-surfaced pavement, 12-ft lane."
+state_program_2-max-hpms-cracking-11ft,state_program_2,"§5 QC and QA checks, p. 17",HPMS cracking,percent,<=59,Flag a value above the allowable width-dependent share,A,"Asphalt-surfaced pavement, 11-ft lane."
+state_program_2-max-hpms-cracking-10ft,state_program_2,"§5 QC and QA checks, p. 17",HPMS cracking,percent,<=65,Flag a value above the allowable width-dependent share,A,"Asphalt-surfaced pavement, 10-ft lane."
+state_program_3-iri-resolution,state_program_3,"Table 6.1, p. 21",IRI resolution,in/mi,=1,Report IRI at required resolution,A,
+state_program_3-iri-accuracy,state_program_3,"Table 6.1, p. 21",IRI error against reference,percent,"[-8,8]",Compare IRI against accuracy standard,A,
+state_program_3-iri-reproducibility,state_program_3,"Table 6.1, p. 21",intervehicle IRI difference absolute value at 95% PWL,in/mi,<10,Verify intervehicle IRI reproducibility,A,
+state_program_3-iri-repeatability,state_program_3,"Table 6.1, p. 21",IRI error relative to five-run mean at 95% PWL,percent,"[-5,5]",Verify IRI repeatability,A,
+state_program_3-rut-resolution,state_program_3,"Table 6.1, p. 21",rut depth resolution,in,<=0.04,Apply rut depth resolution requirement,A,
+state_program_3-rut-accuracy,state_program_3,"Table 6.1, p. 21",rut depth error from reference,in,"[-0.08,0.08]",Apply rut depth accuracy criterion,A,
+state_program_3-rut-reproducibility,state_program_3,"Table 6.1, p. 21",intervehicle rut depth difference absolute value at 95% PWL,in,<0.06,Verify reproducibility,A,
+state_program_3-rut-repeatability,state_program_3,"Table 6.1, p. 21",rut-depth repeat deviation bound,in,"[-0.06,0.06]",Verify required repeatability at 95% PWL,interpretation,Table describes a deviation from mean of five runs and standard deviation
+state_program_3-fault-resolution,state_program_3,"Table 6.1, p. 21",faulting resolution,in,=0.04,Apply faulting resolution requirement,A,
+state_program_3-fault-included,state_program_3,"Table 6.1, p. 21",individual fault size,in,>0.2,Include fault in the right-wheelpath average,A,
+state_program_3-fault-accuracy,state_program_3,"Table 6.1, p. 21",faulting error from reference,in,"[-0.08,0.08]",Compare faulting against accuracy standard,A,
+state_program_3-fault-reproducibility,state_program_3,"Table 6.1, p. 21",intervehicle faulting difference absolute value at 95% PWL,in,<0.06,Verify reproducibility,A,
+state_program_3-fault-repeatability,state_program_3,"Table 6.1, p. 21",faulting deviation bound,in,"[-0.06,0.06]",Verify repeatability at 95% PWL,interpretation,Table describes a deviation from mean of five runs and standard deviation
+state_program_3-asphalt-crack-accuracy,state_program_3,"Tables 6.1 and 7.1, pp. 21, 25",asphalt cracking error against reference at 95% PWL,percent,"[-30,30]",Apply the accuracy acceptance standard,A,
+state_program_3-concrete-crack-accuracy,state_program_3,"Tables 6.1 and 7.1, pp. 21, 25",concrete cracking error against reference,percent,"[-20,20]",Apply the accuracy acceptance standard,A,
+state_program_3-concrete-crack-reprod,state_program_3,"Table 6.1, p. 21",concrete cracking reproducibility error,percent,"[-20,20]",Verify between-vehicle reproducibility,A,
+state_program_3-concrete-crack-repeat,state_program_3,"Table 6.1, p. 21",concrete cracking repeat error,percent,"[-20,20]",Verify five-run repeatability,A,
+state_program_3-asphalt-crack-resolution,state_program_3,"Table 6.1, p. 21",HPMS asphalt cracking resolution,percentage point,=1,Report cracking to the required resolution,A,
+state_program_3-concrete-crack-resolution,state_program_3,"Table 6.1, p. 21",HPMS concrete cracking resolution,percentage point,=1,Report cracked slab share to required resolution,A,
+state_program_3-network-crack-resolution,state_program_3,"Table 6.1, p. 21",CTDOT cracking length resolution,ft,=0.1,Report cracking to the required resolution,A,
+state_program_3-gps-resolution,state_program_3,"Table 6.1, p. 21",latitude and longitude resolution,degree,=0.00001,Report GPS to the required resolution,A,
+state_program_3-gps-error,state_program_3,"Table 6.1, p. 21","GPS error for accuracy, reproducibility or repeatability",degree,"[-0.00005,0.00005]",Check each GPS quality criterion,A,
+state_program_3-slope-accuracy,state_program_3,"Table 6.1, p. 21",cross slope difference from reference,percentage point,"[-0.5,0.5]",Apply accuracy requirement,A,
+state_program_3-slope-reproducibility,state_program_3,"Table 6.1, p. 21",absolute cross slope difference at 99% PWL,percentage point,<0.5,Verify reproducibility,A,
+state_program_3-slope-repeatability,state_program_3,"Table 6.1, p. 21",cross slope standard deviation at 99% PWL,percentage point,<0.05,Verify repeatability,A,
+state_program_3-grade-accuracy,state_program_3,"Table 6.1, p. 21",longitudinal grade difference from reference,percentage point,"[-0.1,0.1]",Apply accuracy requirement,A,
+state_program_3-grade-reproducibility,state_program_3,"Table 6.1, p. 21",grade absolute difference at 99% PWL,percentage point,<0.1,Verify reproducibility,A,
+state_program_3-grade-repeatability,state_program_3,"Table 6.1, p. 21",longitudinal grade standard deviation at 99% PWL,percentage point,<0.1,Verify repeatability,A,
+state_program_3-slope-grade-resolution,state_program_3,"Table 6.1, p. 21",cross slope or grade resolution,percentage point,=0.01,Apply reporting resolution,A,
+state_program_3-curvature-resolution,state_program_3,"Table 6.1, p. 21",radius of curvature resolution,ft,=1,Apply reporting resolution,A,
+state_program_3-curvature-repeatability,state_program_3,"Table 6.1, p. 21",radius of curvature repeat deviation,percent,"[-10,10]",Verify repeatability,A,
+state_program_3-dmi-resolution,state_program_3,"Table 6.1, p. 21",DMI resolution,ft,=0.0001,Apply reporting resolution,A,
+state_program_3-dmi-accuracy,state_program_3,"Table 6.1, p. 21",DMI absolute difference,percent,<0.15,Verify accuracy,A,
+state_program_3-segment-resolution,state_program_3,"Table 6.1 continued, p. 22",segment boundary resolution,mi,=0.00006,Report measured boundaries to required resolution,A,
+state_program_3-segment-length,state_program_3,"Table 6.1 continued, p. 22",segment length,mi,<=0.11,Apply HPMS segment-length cap,A,
+state_program_3-segment-start,state_program_3,"Table 6.1 continued, p. 22",segment start error,mi,"[-0.05,0.05]",Check assigned location accuracy,A,
+state_program_3-imagery-crack,state_program_3,"Table 6.1 continued, p. 22",crack width visible in pavement imagery,in,=0.125,Verify image quality,A,
+state_program_3-range-iri,state_program_3,"Table 6.2, p. 23",section IRI,in/mi,"[30,400]",Review and verify out-of-range sections,A,Routine network criterion at 99% PWL and HPMS check
+state_program_3-range-rut-ct,state_program_3,"Table 6.2, p. 23",CTDOT section rut depth,in,<=0.5,Review out-of-range sections,A,99% PWL
+state_program_3-range-rut-hpms,state_program_3,"Table 6.2, p. 23",HPMS rut depth,in,<=1.00,Review out-of-range sections,A,
+state_program_3-range-fault-ct,state_program_3,"Table 6.2, p. 23",CTDOT section faulting,in,<=0.5,Review out-of-range sections,A,90% PWL
+state_program_3-range-fault-hpms,state_program_3,"Table 6.2, p. 23",HPMS faulting,in,<=1.00,Review out-of-range sections,A,
+state_program_3-range-asphalt-ct,state_program_3,"Table 6.2, p. 23",CTDOT asphalt crack length,ft per 5 lane m,<=150,Review and verify out-of-range sections,A,99% PWL
+state_program_3-range-asphalt-hpms,state_program_3,"Table 6.2, p. 23",HPMS area of asphalt wheelpath fatigue cracking,percent,"[0,54]",Review and verify out-of-range sections,A,12-ft wide 0.1 lane-mile
+state_program_3-range-concrete-ct,state_program_3,"Table 6.2, p. 23",CTDOT concrete cracked slab share,percent,<100,Review and verify out-of-range sections,A,
+state_program_3-range-concrete-hpms,state_program_3,"Table 6.2, p. 23",HPMS concrete cracked slab share,percent,"[0,100]",Review and verify out-of-range sections,A,
+state_program_3-range-slope,state_program_3,"Table 6.2, p. 23",section cross slope,percent,<=10,Review and verify out-of-range sections,A,100% PWL
+state_program_3-range-grade,state_program_3,"Table 6.2, p. 23",section longitudinal grade,percent,<=16,Review and verify out-of-range sections,A,99% PWL
+state_program_3-range-segments,state_program_3,"Table 6.2, p. 23",mismatched 0.1-mi segments per ten miles,count,<1,Review mismatched segment boundaries,A,99% PWL
+state_program_3-range-images,state_program_3,"Table 6.2, p. 23",missing images per 0.062 mi,count,<1,Review and verify missing-image coverage,A,99% PWL
+state_program_3-compare-batch,state_program_3,"§7, p. 24",batch sampled for year-on-year comparisons,percent,>=15,Carry out comparisons and investigate exceptions,A,
+state_program_3-sample-images,state_program_3,"Table 7.1, p. 25",sample of pavement images inspected on delivery,percent,"[5,10]",Check imagery on delivery,A,
+state_program_3-asphalt-cov-intervehicle-total,state_program_3,"Table 6.1, p. 21",total asphalt cracking coefficient of variation at 95% PWL,percent,<10,Check intervehicle variation against criterion,A,
+state_program_3-asphalt-cov-intervehicle-type-specific,state_program_3,"Table 6.1, p. 21",type-specific asphalt cracking coefficient of variation at 95% PWL,percent,<20,Check intervehicle variation against criterion,A,
+state_program_3-asphalt-cov-intervehicle-wheelpath,state_program_3,"Table 6.1, p. 21",wheelpath asphalt cracking coefficient of variation at 95% PWL,percent,<40,Check intervehicle variation against criterion,A,
+state_program_3-asphalt-cov-intervehicle-non-wheelpath,state_program_3,"Table 6.1, p. 21",non-wheelpath asphalt cracking coefficient of variation at 95% PWL,percent,<60,Check intervehicle variation against criterion,A,
+state_program_3-asphalt-cov-repeat-total,state_program_3,"Table 6.1, p. 21",total asphalt cracking coefficient of variation at 95% PWL,percent,<10,Check repeat variation against criterion,A,
+state_program_3-asphalt-cov-repeat-type-specific,state_program_3,"Table 6.1, p. 21",type-specific asphalt cracking coefficient of variation at 95% PWL,percent,<15,Check repeat variation against criterion,A,
+state_program_3-asphalt-cov-repeat-wheelpath,state_program_3,"Table 6.1, p. 21",wheelpath asphalt cracking coefficient of variation at 95% PWL,percent,<30,Check repeat variation against criterion,A,
+state_program_3-asphalt-cov-repeat-non-wheelpath,state_program_3,"Table 6.1, p. 21",non-wheelpath asphalt cracking coefficient of variation at 95% PWL,percent,<50,Check repeat variation against criterion,A,
