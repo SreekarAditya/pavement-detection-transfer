@@ -1,0 +1,12 @@
+{
+  "cfr490":{"file":"cfr490-reading.txt","page_offset":-184},
+  "hif18022":{"file":"hif18022.txt","page_offset":12},
+  "hif18032":{"file":"hif18032.txt","page_offset":6},
+  "state_program_1":{"file":"candidates/alaska-plan.txt","page_offset":3},
+  "state_program_2":{"file":"candidates/arizona_adot_dqmp_2020-11-10_v5.txt","page_offset":0},
+  "state_program_3":{"file":"candidates/connecticut-plan.txt","page_offset":0},
+  "ltpp_manual":{"file":"ltpp_manual.txt","page_offset":14},
+  "nhai_1":{"file":"nhai_1.txt","page_offset":0},
+  "nhai_2":{"file":"nhai_2.txt","page_offset":13},
+  "aashto_r85":{"file":"aashto_reading.txt","section_scoped":true}
+}

@@ -1,0 +1,24 @@
+fixture_id,source_id,locator,published_action,phase
+hif18022-iri-length--route-aaa-01,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-02,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-03,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-04,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-05,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-06,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-07,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-08,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,length_violation,published_worked_example
+hif18022-iri-length--route-aaa-09,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-10,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-11,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-12,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-iri-length--route-aaa-13,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-length--route-aaa-01,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-coincidence--route-aaa-01,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-length--route-aaa-02,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,length_violation,published_worked_example
+hif18022-rut-coincidence--route-aaa-02,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,coincidence_violation,published_worked_example
+hif18022-rut-length--route-aaa-03,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-coincidence--route-aaa-03,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-length--route-aaa-04,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-coincidence--route-aaa-04,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,coincidence_violation,published_worked_example
+hif18022-rut-length--route-aaa-05,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
+hif18022-rut-coincidence--route-aaa-05,hif18022,Transcribed Route AAA input columns. Published flag columns are omitted.,no_violation,published_worked_example
